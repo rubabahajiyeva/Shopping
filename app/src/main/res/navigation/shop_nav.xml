@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shop_nav"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.rubabe.shopapp.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/switch_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/switch_signInFragment_to_mainFragment"
+            app:destination="@id/mainPageFragment" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="password"
+            app:argType="string"
+            android:defaultValue='""' />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.rubabe.shopapp.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/switchToSignInFromSignUp"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.rubabe.shopapp.DetailsPageFragment"
+        android:label="DetailsFragment"
+        tools:layout="@layout/fragment_details_page" >
+        <argument
+            android:name="productId"
+            app:argType="string"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/switchfromDetailsFragmentToCardFargment"
+            app:destination="@id/cardPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardPageFragment"
+        android:name="com.rubabe.shopapp.CardPageFragment"
+        android:label="CardPageFragment"
+        tools:layout="@layout/fragment_card_page"/>
+    <fragment
+        android:id="@+id/likePageFragment"
+        android:name="com.rubabe.shopapp.LikePageFragment"
+        android:label="fragment_like_page"
+        tools:layout="@layout/fragment_like_page" />
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.rubabe.shopapp.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/switch_mainFragment_self"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/switch_mainFragment_to_cardFragment"
+            app:destination="@id/cardPageFragment" />
+        <action
+            android:id="@+id/switch_mainFragment_to_likeFragment"
+            app:destination="@id/likePageFragment" />
+        <action
+            android:id="@+id/switch_mainFragment_to_signInFragmentFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/switch_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+</navigation>

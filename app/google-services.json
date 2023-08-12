@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "658251386952",
+    "project_id": "shopapp-c54f6",
+    "storage_bucket": "shopapp-c54f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658251386952:android:cf434ccb55bd745d51087d",
+        "android_client_info": {
+          "package_name": "com.rubabe.shopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658251386952-7th405btrhbkrqr0rjilev3mn8jevdtu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rubabe.shopapp",
+            "certificate_hash": "a580df00401ec55ea59c13648c389f688dd5cc0b"
+          }
+        },
+        {
+          "client_id": "658251386952-s70eu0h3fl3098k1s8cus95q6um1tn4m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ6arDtFZt70zojKDCPBs-5r-VZVsjOes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658251386952-s70eu0h3fl3098k1s8cus95q6um1tn4m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

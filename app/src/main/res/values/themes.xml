@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ShopApp" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorSurface">@color/background_primary</item>
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/purple</item>
+        <item name="colorAccent">@color/purple</item>
+
+
+    </style>
+
+    <style name="BottomNavigationViewStyle" parent="Widget.Design.BottomNavigationView">
+        <!-- Customize the text color -->
+        <item name="itemTextColor">@color/purple</item>
+        <item name="itemIconTint">@color/purple</item>
+        <!-- Customize the background color -->
+        <item name="android:background">@color/purple</item>
+    </style>
+
+
+    <style name="Theme.ShopApp" parent="Base.Theme.ShopApp" />
+</resources>
