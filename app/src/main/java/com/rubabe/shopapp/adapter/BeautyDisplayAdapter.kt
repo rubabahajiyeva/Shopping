@@ -34,13 +34,13 @@ class BeautyDisplayAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = list[position]
         holder.binding.tvNameBeautyDisplayItem.text = "${currentItem.brand} ${currentItem.name}"
-        holder.binding.tvPriceBeautyDisplayItem.text = "₹${currentItem.price}"
+        holder.binding.tvPriceBeautyDisplayItem.text = "$${currentItem.price}"
 
 
         Glide
             .with(context)
             .load(currentItem.imageUrl)
-            .into(holder.binding.ivShoeDisplayItem)
+            .into(holder.binding.ivBeautyDisplayItem)
 
 
         holder.itemView.setOnClickListener {

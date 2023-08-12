@@ -48,7 +48,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         if (email.isNotEmpty() && password.isNotEmpty()) {
             // Check if the provided email and password match the sign-up values
             if (email == signUpEmail && password == signUpPassword) {
-                auth.signInWithEmailAndPassword(email, password)
+                auth.signInWithEmailAndPassword(email.trim(), password)
                     .addOnSuccessListener {
                         findNavController().navigate(R.id.switch_signInFragment_to_mainFragment)
                     }

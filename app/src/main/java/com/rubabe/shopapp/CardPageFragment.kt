@@ -1,5 +1,6 @@
 package com.rubabe.shopapp
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -21,11 +22,13 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnLo
     private lateinit var cartList: ArrayList<CardModel>
     private lateinit var auth: FirebaseAuth
     private lateinit var adapter: CardAdapter
-    private var subTotalPrice = 0
-    private var totalPrice = 240
+    private var subTotalPrice = 0.0
+    private var totalPrice = 0.0
+    private var deliveryPrice = 15
 
     private var orderDatabaseReference = Firebase.firestore.collection("orders")
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,27 +53,24 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnLo
         binding.rvCartItems.adapter = adapter
         binding.rvCartItems.layoutManager = layoutManager
 
-
-
-
-
+        binding.deliveryPriceTV.text = "$$deliveryPrice"
 
         binding.btnCartCheckout.setOnClickListener {
 
-            requireActivity().toast("Whooooa!! You've Ordered Products worth ${totalPrice}\n Your Product will be delivered in next 7 days")
             cartList.clear()
-            binding.tvLastSubTotalprice.text ="0"
-            binding.tvLastTotalPrice.text ="Min 1 product is Required"
+
+            if(binding.tvLastTotalPrice.text.toString() == "$0"){
+                binding.tvLastTotalPrice.text ="Min 1 product is Required"
+            }else{
+                requireActivity().toast("You've Ordered Products worth ${totalPrice}\n Your Product will be delivered in next 7 days")
+            }
+
             binding.tvLastTotalPrice.setTextColor(Color.RED)
-            // TODO: remove the data of the Products from the fireStore after checkout or insert a boolean isDelivered
             adapter.notifyDataSetChanged()
         }
 
 
     }
-
-
-
 
     private fun retrieveCartItems() {
 
@@ -83,10 +83,12 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnLo
 
 
                     cartList.add(cartProduct)
-                    subTotalPrice += cartProduct.price!!.toInt()
-                    totalPrice += cartProduct.price!!.toInt()
-                    binding.tvLastSubTotalprice.text = subTotalPrice.toString()
-                    binding.tvLastTotalPrice.text = totalPrice.toString()
+                    subTotalPrice += cartProduct.price!!.toDouble()
+                    var sub = "$${subTotalPrice}"
+                    totalPrice += cartProduct.price.toDouble() + deliveryPrice
+                    var total = "$${totalPrice}"
+                    binding.tvLastSubTotalprice.text = sub
+                    binding.tvLastTotalPrice.text = total
                     binding.tvLastSubTotalItems.text = "SubTotal Items(${cartList.size})"
                     adapter.notifyDataSetChanged()
 

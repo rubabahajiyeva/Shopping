@@ -38,14 +38,14 @@ class LikeAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = list[position]
         holder.binding.tvNameBeautyDisplayItem.text = "${currentItem.brand} ${currentItem.name}"
-        holder.binding.tvPriceBeautyDisplayItem.text = "₹${currentItem.price}"
+        holder.binding.tvPriceBeautyDisplayItem.text = "$${currentItem.price}"
         holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
 
 
         Glide
             .with(context)
             .load(currentItem.imageUrl)
-            .into(holder.binding.ivShoeDisplayItem)
+            .into(holder.binding.ivBeautyDisplayItem)
 
 
         holder.itemView.setOnClickListener {
@@ -55,7 +55,6 @@ class LikeAdapter(
         holder.binding.btnLike.setOnClickListener {
             likeClickInterface.onClickLike(currentItem)
             holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
-
             likeClickInterface.onClickLike(currentItem)
         }
 

@@ -30,18 +30,18 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCartProductName"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Advanced Night Repair"
         android:layout_marginStart="15dp"
+        android:text="Advanced Night Repair"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@id/ivCardView"
-        app:layout_constraintTop_toTopOf="parent"
 
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCartProductPrice"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="1000"
         app:layout_constraintStart_toStartOf="@id/tvCartProductName"
@@ -49,9 +49,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSize"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Size : "
+        android:text="Type : "
         app:layout_constraintStart_toStartOf="@id/tvCartProductPrice"
         app:layout_constraintTop_toBottomOf="@id/tvCartProductPrice" />
 
@@ -66,17 +66,19 @@
         app:layout_constraintBottom_toBottomOf="@id/tvSize" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline6"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCartItemAdd"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/custom_size"
             android:text="+"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -88,14 +90,15 @@
             android:id="@+id/tvCartItemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="2dp"
+            android:layout_marginStart="6dp"
+            android:padding="3dp"
             android:text="01" />
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCartItemMinus"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:id="@+id/btnCartItemRemove"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@drawable/custom_size"
             android:text="-"
             android:textColor="@color/white"

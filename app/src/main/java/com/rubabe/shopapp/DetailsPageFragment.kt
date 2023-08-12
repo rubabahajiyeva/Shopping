@@ -34,12 +34,12 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
 
     private val orderDatabaseReference = Firebase.firestore.collection("orders")
 
-    private lateinit var currentUID :  String
-    private lateinit var orderImageUrl:String
-    private lateinit var orderName:String
-    private var orderSize:String?  = null
-    private var orderQuantity:Int  = 1
-    private lateinit var orderPrice:String
+    private lateinit var currentUID: String
+    private lateinit var orderImageUrl: String
+    private lateinit var orderName: String
+    private var orderSize: String? = null
+    private var orderQuantity: Int = 1
+    private lateinit var orderPrice: String
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,7 +56,6 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
         binding.detailActualToolbar.setNavigationOnClickListener {
             Navigation.findNavController(requireView()).popBackStack()
         }
-
 
 
         // region implements firebase product display
@@ -77,7 +76,7 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
                             orderName = products.name!!
                             orderPrice = products.price!!
 
-                            binding.tvDetailsProductPrice.text = "₹${products.price}"
+                            binding.tvDetailsProductPrice.text = "$${products.price}"
                             binding.tvDetailsProductName.text = "${products.brand} ${products.name}"
                             binding.tvDetailsProductDescription.text = products.description
                         }
@@ -104,33 +103,38 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
         // region implements size recycler view
 
         val sizeList = ArrayList<String>()
-        sizeList.add("5")
-        sizeList.add("6")
-        sizeList.add("7")
-        sizeList.add("8")
-        sizeList.add("9")
-        sizeList.add("10")
+        sizeList.add("All")
+        sizeList.add("Light")
+        sizeList.add("Medium")
+        sizeList.add("Deep")
 
-
-        sizeAdapter = SizeAdapter(requireContext() , sizeList , this)
+        sizeAdapter = SizeAdapter(requireContext(), sizeList, this)
         binding.rvSelectSize.adapter = sizeAdapter
 
         // endregion implements size recycler view
-
 
 
         binding.btnDetailsAddToCart.setOnClickListener {
 
             // TODO: Add Data to FireBase FireStore Database
 
-            val orderedProduct = ProductOrderModel(currentUID,productId,orderImageUrl,orderName,orderSize,orderQuantity,orderPrice)
+            val orderedProduct = ProductOrderModel(
+                currentUID,
+                productId,
+                orderImageUrl,
+                orderName,
+                orderSize,
+                orderQuantity,
+                orderPrice
+            )
 
-            if(orderSize.isNullOrBlank()){
-                requireActivity().toast("Select Size")
-            }else{
+            if (orderSize.isNullOrBlank()) {
+                requireActivity().toast("Select Type")
+            } else {
                 addDataToOrdersDatabase(orderedProduct)
 
-                Navigation.findNavController(view).navigate(R.id.switchfromDetailsFragmentToCardFargment)
+                Navigation.findNavController(view)
+                    .navigate(R.id.switchfromDetailsFragmentToCardFargment)
             }
 
 
@@ -140,19 +144,19 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
 
     private fun addDataToOrdersDatabase(orderedProduct: ProductOrderModel) {
 
-        orderDatabaseReference.add(orderedProduct).addOnCompleteListener{task ->
-            if(task.isSuccessful){
+        orderDatabaseReference.add(orderedProduct).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 requireActivity().toast("Order Successfully Delivered")
-            }else{
+            } else {
                 requireActivity().toast(task.exception!!.localizedMessage!!)
             }
         }
 
     }
 
-    override fun onClickSize(button: Button, position :Int) {
+    override fun onClickSize(button: Button, position: Int) {
         orderSize = button.text.toString()
-        requireActivity().toast("Size ${button.text} Selected")
+        requireActivity().toast("${button.text} Selected")
     }
 
 }

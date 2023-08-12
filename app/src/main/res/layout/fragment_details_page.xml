@@ -96,7 +96,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select size"
+            android:text="Select type"
             android:textColor="@color/black"
             android:textStyle="bold"
             />
@@ -130,7 +130,8 @@
                     android:layout_height="wrap_content"
                     android:text="Price"
                     android:textSize="16sp"
-                    android:padding="5dp"
+                    android:paddingVertical="5dp"
+                    android:paddingEnd="5dp"
                     android:textColor="@color/purple"
                     />
 

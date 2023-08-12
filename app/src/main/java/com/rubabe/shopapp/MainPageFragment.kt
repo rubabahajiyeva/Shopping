@@ -125,7 +125,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
                 if (snapshot.exists()) {
                     for (dataSnapshot in snapshot.children) {
                         val products = dataSnapshot.getValue(BeautyDisplayModel::class.java)
-
+                        //val imageUrl = products?.imageUrl
                         categoryList.add(products!!.brand!!)
 
                     }

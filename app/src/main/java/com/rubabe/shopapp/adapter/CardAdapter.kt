@@ -14,8 +14,9 @@ class CardAdapter(
     private val context: Context,
     private val list: ArrayList<CardModel>,
     private val onLongClickRemove: OnLongClickRemove
-) : RecyclerView.Adapter<CardAdapter.ViewHolder>() {
 
+) : RecyclerView.Adapter<CardAdapter.ViewHolder>() {
+    var count = 2
 
     inner class ViewHolder(val binding: CardProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -50,23 +51,26 @@ class CardAdapter(
 
 
         holder.binding.tvCartProductName.text = currentItem.name
-        holder.binding.tvCartProductPrice.text = "₹${currentItem.price}"
+        holder.binding.tvCartProductPrice.text = "$${currentItem.price}"
         holder.binding.tvCartItemCount.text = currentItem.quantity.toString()
         holder.binding.tvCartProductSize.text = currentItem.size
 
-        var count = holder.binding.tvCartItemCount.text.toString().toInt()
+        count = holder.binding.tvCartItemCount.text.toString().toInt()
 
         holder.binding.btnCartItemAdd.setOnClickListener {
-//            count++
-            // TODO: Update Quantity in Database also
-//            holder.binding.tvCartItemCount.text = count.toString()
+            count++
+            holder.binding.tvCartItemCount.text = count.toString()
 
         }
 
-        holder.binding.btnCartItemMinus.setOnClickListener {
-//            count--
-            // TODO: Update Quantity in Database also
-//            holder.binding.tvCartItemCount.text = count.toString()
+        holder.binding.btnCartItemRemove.setOnClickListener {
+            if (count > 1) {
+                count--
+            } else {
+                count = 1
+            }
+
+            holder.binding.tvCartItemCount.text = count.toString()
         }
 
         holder.itemView.setOnLongClickListener {

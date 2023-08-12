@@ -61,7 +61,11 @@
         android:id="@+id/likePageFragment"
         android:name="com.rubabe.shopapp.LikePageFragment"
         android:label="fragment_like_page"
-        tools:layout="@layout/fragment_like_page" />
+        tools:layout="@layout/fragment_like_page" >
+        <action
+            android:id="@+id/action_likePageFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainPageFragment"
         android:name="com.rubabe.shopapp.MainPageFragment"
