@@ -34,7 +34,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
     private lateinit var binding: FragmentMainPageBinding
     private lateinit var databaseReference: DatabaseReference
     private lateinit var productList: ArrayList<BeautyDisplayModel>
-    private lateinit var categoryList: ArrayList<String>
+    private lateinit var categoryList: LinkedHashSet<String>
     private lateinit var productsAdapter: BeautyDisplayAdapter
     private lateinit var categoryAdapter: MainCategoryAdapter
     private lateinit var auth: FirebaseAuth
@@ -45,7 +45,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentMainPageBinding.bind(view)
-        categoryList = ArrayList()
+        categoryList = LinkedHashSet()
         productList = ArrayList()
         databaseReference = FirebaseDatabase.getInstance().getReference("products")
         auth = FirebaseAuth.getInstance()
@@ -126,7 +126,9 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
                     for (dataSnapshot in snapshot.children) {
                         val products = dataSnapshot.getValue(BeautyDisplayModel::class.java)
                         //val imageUrl = products?.imageUrl
+
                         categoryList.add(products!!.brand!!)
+
 
                     }
 

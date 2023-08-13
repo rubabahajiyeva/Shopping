@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rubabe.shopapp.databinding.CategoryMainItemBinding
 
 class MainCategoryAdapter(
-    private val list: ArrayList<String>,
+    private val list: LinkedHashSet<String>,
     val onClickCategory: CategoryOnClickInterface
 ) : RecyclerView.Adapter<MainCategoryAdapter.ViewHolder>() {
 
@@ -25,11 +25,14 @@ class MainCategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.btnItemCategory.text = list[position]
+        holder.binding.btnItemCategory.text = list.elementAt(position)
+
 
         holder.binding.btnItemCategory.setOnClickListener {
             onClickCategory.onClickCategory(holder.binding.btnItemCategory)
         }
+
+        list
 
     }
 

@@ -7,6 +7,6 @@ data class CardModel(
     val name: String? = null,
     val price: String? = null,
     val size: String? = null,
-    val quantity: Int? = null
+    var quantity: Int? = null
 
 )
