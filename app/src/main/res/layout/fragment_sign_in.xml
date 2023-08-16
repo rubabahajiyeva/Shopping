@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignInFragment">
+    tools:context=".fragment.SignInFragment">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="158dp"
-        android:layout_height="152dp"
+        android:layout_width="@dimen/dp_158"
+        android:layout_height="@dimen/dp_152"
         android:scaleType="fitXY"
         android:src="@drawable/sign_in_small_rectangle"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="299dp"
-        android:layout_height="202dp"
+        android:layout_width="@dimen/dp_299"
+        android:layout_height="@dimen/dp_202"
         android:src="@drawable/pana"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/dp_16"
         android:scaleType="fitXY"
         android:src="@drawable/signin_background"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -42,12 +42,12 @@
         android:id="@+id/sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_24"
         android:fontFamily="@font/manrope_semibold"
         android:text="Sign in"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/imageView4" />
@@ -56,12 +56,12 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/dp_32"
+                android:layout_marginTop="@dimen/dp_20"
                 android:fontFamily="@font/manrope_semibold"
                 android:text="Email"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="@dimen/sp_18"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sign_in" />
@@ -69,7 +69,7 @@
             <EditText
                 android:id="@+id/email_Sign_In"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="@dimen/dp_45"
                 android:layout_marginHorizontal="@dimen/dp_32"
                 android:layout_marginTop="@dimen/dp_8"
                 android:background="@drawable/edit_text_background"
@@ -90,7 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/dp_16"
                 android:fontFamily="@font/manrope_semibold"
                 android:text="@string/password"
                 android:textColor="@color/white"
@@ -99,7 +99,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_Sign_In" />
 
-            <com.rubabe.shopapp.CustomEditText
+            <com.rubabe.shopapp.custom.CustomEditText
                 android:id="@+id/password_Sign_In"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_45"
@@ -121,9 +121,9 @@
         android:id="@+id/switchToSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/dp_20"
         android:text="@string/create_new_account_sign_up"
-        android:textSize="16sp"
+        android:textSize="@dimen/sp_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_Sign_In" />
@@ -133,7 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/dp_32"
         android:background="@drawable/sign_button_background"
         android:fontFamily="@font/manrope_semibold"
         android:onClick="signIn"

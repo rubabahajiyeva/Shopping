@@ -1,5 +1,6 @@
 package com.rubabe.shopapp.adapter
 
+import android.annotation.SuppressLint
 import com.rubabe.shopapp.databinding.CardProductItemBinding
 import com.rubabe.shopapp.model.CardModel
 import android.content.Context
@@ -7,7 +8,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.rubabe.shopapp.Delete
+import com.rubabe.shopapp.utils.Delete
+
 
 
 class CardAdapter(
@@ -40,6 +42,7 @@ class CardAdapter(
         )
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val currentItem = list[position]

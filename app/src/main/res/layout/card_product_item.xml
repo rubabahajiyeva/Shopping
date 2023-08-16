@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp">
+    android:layout_margin="@dimen/dp_20">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ivCardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:cardBackgroundColor="@color/purple"
-        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/main_green"
+        app:cardCornerRadius="@dimen/dp_10"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@id/guideline5"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="@dimen/dp_15"
         android:text="Advanced Night Repair"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintStart_toEndOf="@id/ivCardView"
@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="07"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="@dimen/dp_3"
         app:layout_constraintTop_toTopOf="@id/tvSize"
         app:layout_constraintStart_toEndOf="@id/tvSize"
         app:layout_constraintBottom_toBottomOf="@id/tvSize" />
@@ -70,15 +70,15 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="@dimen/dp_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline6"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCartItemAdd"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
             android:background="@drawable/custom_size"
             android:text="+"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
@@ -90,15 +90,15 @@
             android:id="@+id/tvCartItemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:padding="3dp"
+            android:layout_marginStart="@dimen/dp_6"
+            android:padding="@dimen/dp_3"
             android:text="01" />
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCartItemRemove"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
             android:background="@drawable/custom_size"
             android:text="-"
             android:textColor="@color/white"

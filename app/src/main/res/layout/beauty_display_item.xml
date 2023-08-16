@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="5dp"
+    android:layout_marginEnd="@dimen/dp_5"
     android:clickable="true"
     android:focusable="true"
-    android:elevation="10dp"
+    android:elevation="@dimen/dp_10"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="@dimen/dp_10"
     app:layout_constraintDimensionRatio="2:1">
 
 
@@ -17,7 +17,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/light_gray"
-        android:padding="10dp"
+        android:padding="@dimen/dp_10"
         android:scaleType="fitXY"
         android:src="@drawable/este_lauder_mix"
         app:layout_constraintDimensionRatio="1:1"
@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Product Name"
+        android:textColor="@color/grey"
         app:layout_constraintStart_toStartOf="@id/ivBeautyDisplayItem"
         app:layout_constraintTop_toBottomOf="@id/ivBeautyDisplayItem"
         />
@@ -42,9 +43,10 @@
         style="@style/TextAppearance.MaterialComponents.Subtitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/grey"
         app:layout_constraintStart_toStartOf="@id/tvNameBeautyDisplayItem"
         app:layout_constraintTop_toBottomOf="@id/tvNameBeautyDisplayItem"
-        android:text="10000" />
+        android:text="50" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -56,19 +58,17 @@
 
     <ToggleButton
         android:id="@+id/btnLike"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:minHeight="48dp"
-        android:minWidth="48dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="@dimen/dp_30"
+        android:minHeight="@dimen/dp_48"
+        android:minWidth="@dimen/dp_48"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent"
         android:textOn=""
         android:textOff=""
-        android:background="@drawable/black_heart"
-        android:backgroundTint="@color/white"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        app:tint="@color/white" />
+        android:background="@drawable/like_icon"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,13 +49,12 @@ class LikeAdapter(
 
 
         holder.itemView.setOnClickListener {
-            productClickInterface.onClickProduct(list[position])
+            productClickInterface.onClickProduct(currentItem)
         }
 
         holder.binding.btnLike.setOnClickListener {
             likeClickInterface.onClickLike(currentItem)
             holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
-            likeClickInterface.onClickLike(currentItem)
         }
 
     }

@@ -1,8 +1,9 @@
 package com.rubabe.shopapp.model
 
+
 data class UserModel(
-    var userId: String?,
-    var userName: String,
-    var userEmail: String,
-    var userPassword: String
+    var userId: String? = null,
+    val userName: String? = null,
+    var userEmail: String? = null,
+    var userPassword: String? = null
 )

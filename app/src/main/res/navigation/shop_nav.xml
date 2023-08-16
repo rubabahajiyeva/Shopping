@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.rubabe.shopapp.SignInFragment"
+        android:name="com.rubabe.shopapp.fragment.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.rubabe.shopapp.SignUpFragment"
+        android:name="com.rubabe.shopapp.fragment.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.rubabe.shopapp.DetailsPageFragment"
+        android:name="com.rubabe.shopapp.fragment.DetailsPageFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details_page" >
         <argument
@@ -54,12 +54,12 @@
     </fragment>
     <fragment
         android:id="@+id/cardPageFragment"
-        android:name="com.rubabe.shopapp.CardPageFragment"
+        android:name="com.rubabe.shopapp.fragment.CardPageFragment"
         android:label="CardPageFragment"
         tools:layout="@layout/fragment_card_page"/>
     <fragment
         android:id="@+id/likePageFragment"
-        android:name="com.rubabe.shopapp.LikePageFragment"
+        android:name="com.rubabe.shopapp.fragment.LikePageFragment"
         android:label="fragment_like_page"
         tools:layout="@layout/fragment_like_page" >
         <action
@@ -68,7 +68,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.rubabe.shopapp.MainPageFragment"
+        android:name="com.rubabe.shopapp.fragment.MainPageFragment"
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
         <action
@@ -81,10 +81,26 @@
             android:id="@+id/switch_mainFragment_to_likeFragment"
             app:destination="@id/likePageFragment" />
         <action
-            android:id="@+id/switch_mainFragment_to_signInFragmentFragment"
-            app:destination="@id/signInFragment" />
-        <action
             android:id="@+id/switch_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/switch_mainFragment_to_profile_Fragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.rubabe.shopapp.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue='""' />
+        <action
+            android:id="@+id/switch_from_profilefragment_to_signinfragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
 </navigation>

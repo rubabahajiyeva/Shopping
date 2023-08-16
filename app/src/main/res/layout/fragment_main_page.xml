@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainPageFragment">
+    tools:context=".fragment.MainPageFragment">
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rvMainCategories"
       android:layout_width="match_parent"
-      android:layout_height="70dp"
-      android:padding="10dp"
-      android:layout_marginTop="10dp"
+      android:layout_height="@dimen/dp_70"
+      android:padding="@dimen/dp_10"
+      android:layout_marginTop="@dimen/dp_10"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
@@ -21,8 +21,8 @@
       android:id="@+id/llTextGroup"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="10dp"
-      android:layout_marginEnd="10dp"
+      android:layout_marginStart="@dimen/dp_10"
+      android:layout_marginEnd="@dimen/dp_10"
       android:orientation="horizontal"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -32,10 +32,10 @@
         android:id="@+id/tvMainCategories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="@dimen/dp_5"
         android:layout_weight="1"
         android:text="Trending"
-        android:textColor="@color/purple"
+        android:textColor="@color/main_green"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -43,18 +43,21 @@
         android:id="@+id/tvSeeAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:textColor="@color/purple"
+        android:layout_marginEnd="@dimen/dp_5"
+        android:paddingStart="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_5"
+        android:background="@drawable/see_all_background"
+        android:textColor="@color/main_green"
         android:text="See All"
-        android:textSize="16sp" />
+        android:textSize="@dimen/sp_18" />
   </LinearLayout>
 
   <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/rvMainProductList"
       android:layout_width="0dp"
       android:layout_height="0dp"
-      android:layout_margin="10dp"
-      android:padding="10dp"
+      android:layout_margin="@dimen/dp_10"
+      android:padding="@dimen/dp_10"
       app:layout_constraintBottom_toTopOf="@+id/bnv_main"
       app:layout_constraintEnd_toEndOf="@id/llTextGroup"
       app:layout_constraintHorizontal_bias="1.0"
@@ -65,17 +68,15 @@
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
        android:id="@+id/bnv_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="10dp"
-        app:itemIconTint="@color/bottom_menu_icon_tint"
-        app:itemTextColor="@color/bottom_menu_icon_tint"
-        android:background="@color/black"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"/>
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:menu="@menu/bottom_nav_menu"
+      app:itemIconTint="@color/bottom_menu_icon_tint"
+      app:itemTextColor="@color/bottom_menu_icon_tint"
+      app:labelVisibilityMode="labeled"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

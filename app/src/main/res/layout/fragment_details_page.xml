@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/back_icon"
             app:title="Details"
+            app:titleTextColor="@color/main_green"
             />
 
 
@@ -47,7 +48,7 @@
                 android:id="@+id/ivDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:padding="@dimen/dp_20"
                 android:scaleType="fitCenter"
                 android:src="@drawable/este_lauder_mix"
                 app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
@@ -63,12 +64,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="@dimen/dp_20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="1"
-        android:elevation="10dp"
+        android:elevation="@dimen/dp_10"
         android:background="@color/light_gray"
         >
 
@@ -79,7 +80,7 @@
             android:text="Estee Lauder Night Repair"
             style="@style/TextAppearance.MaterialComponents.Headline5"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             />
 
 
@@ -89,15 +90,15 @@
             android:layout_height="wrap_content"
             android:maxLines="4"
             android:text="Description"
-            android:padding="3dp"
-            android:textColor="@color/purple"
+            android:padding="@dimen/dp_3"
+            android:textColor="@color/main_green"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select type"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
             />
 
@@ -129,10 +130,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Price"
-                    android:textSize="16sp"
-                    android:paddingVertical="5dp"
-                    android:paddingEnd="5dp"
-                    android:textColor="@color/purple"
+                    android:textSize="@dimen/sp_16"
+                    android:paddingVertical="@dimen/dp_5"
+                    android:paddingEnd="@dimen/dp_5"
+                    android:textColor="@color/main_green"
                     />
 
                 <TextView
@@ -140,8 +141,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="120"
-                    android:textSize="22sp"
-                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_22"
+                    android:textColor="@color/white"
                     android:textStyle="bold"
                     />
 
@@ -154,7 +155,7 @@
                 android:text="Add to Cart"
                 android:textColor="@color/white"
                 android:layout_gravity="center_vertical"
-                android:padding="15dp"
+                android:padding="@dimen/dp_15"
                 android:background="@drawable/custom_button"
                 />
 

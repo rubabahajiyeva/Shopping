@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.rubabe.shopapp.R
 import com.rubabe.shopapp.databinding.BeautyDisplayItemBinding
 import com.rubabe.shopapp.model.BeautyDisplayModel
 
@@ -49,11 +50,10 @@ class BeautyDisplayAdapter(
 
         holder.binding.btnLike.setOnClickListener {
             if(holder.binding.btnLike.isChecked){
-                holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
+                holder.binding.btnLike.setBackgroundResource(R.drawable.unlike_icon)
                 likeClickInterface.onClickLike(currentItem)
-            }
-            else{
-                holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.WHITE)
+            } else {
+                holder.binding.btnLike.setBackgroundResource(R.drawable.like_icon)
             }
 
         }
