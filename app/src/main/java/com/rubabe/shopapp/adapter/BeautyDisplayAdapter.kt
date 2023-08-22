@@ -3,10 +3,9 @@ package com.rubabe.shopapp.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rubabe.shopapp.R
@@ -50,13 +49,15 @@ class BeautyDisplayAdapter(
 
         holder.binding.btnLike.setOnClickListener {
             if(holder.binding.btnLike.isChecked){
-                holder.binding.btnLike.setBackgroundResource(R.drawable.unlike_icon)
+                holder.binding.btnLike.setBackgroundResource(R.drawable.like_heart_icon)
                 likeClickInterface.onClickLike(currentItem)
+
             } else {
-                holder.binding.btnLike.setBackgroundResource(R.drawable.like_icon)
+                holder.binding.btnLike.setBackgroundResource(R.drawable.unlike_heart_icon)
             }
 
         }
+
 
     }
 

@@ -64,7 +64,7 @@
                 android:textColor="@color/main_green" />
 
             <TextView
-                android:id="@+id/tvLastSubTotalprice"
+                android:id="@+id/tvLastSubTotalPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$0"

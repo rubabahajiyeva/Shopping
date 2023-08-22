@@ -41,7 +41,6 @@ class LikeAdapter(
         holder.binding.tvPriceBeautyDisplayItem.text = "$${currentItem.price}"
         holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
 
-
         Glide
             .with(context)
             .load(currentItem.imageUrl)

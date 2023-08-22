@@ -40,7 +40,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             val password = binding.passwordSignIn.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                validateSignInCredentials(email, password)
+                signIn(email, password)
             } else {
                 requireActivity().toast("Enter email and password")
             }
@@ -59,10 +59,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     if (snapshot.exists()) {
                         for (userSnapshot in snapshot.children) {
                             val user = userSnapshot.getValue(UserModel::class.java)
-                            if (user?.userPassword == password) {
-                                signIn(email, password)
-                                return
-                            }
+                            /*  if (user?.userPassword == password) {
+                                  signIn(email, password)
+                                  return
+                              } */
                         }
                         requireActivity().toast("Invalid email or password")
                     } else {

@@ -98,9 +98,6 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
 
         productDatabaseReference.addValueEventListener(valueEvent)
 
-        // endregion implements firebase product display
-
-        // region implements size recycler view
 
         val sizeList = ArrayList<String>()
         sizeList.add("All")
@@ -146,7 +143,7 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
 
         orderDatabaseReference.add(orderedProduct).addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                requireActivity().toast("Order Successfully Delivered")
+                requireActivity().toast("Product added to the basket")
             } else {
                 requireActivity().toast(task.exception!!.localizedMessage!!)
             }

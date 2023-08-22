@@ -44,13 +44,14 @@ class ProfileFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().reference
+        binding.profileActualToolbar.title = "My Profile"
 
         binding.exitAccount.setOnClickListener {
             auth.signOut()
             findNavController().navigate(R.id.switch_from_profilefragment_to_signinfragment)
         }
 
-        binding.backIcon.setOnClickListener{
+        binding.profileActualToolbar.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_mainPageFragment)
         }
 

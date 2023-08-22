@@ -42,17 +42,17 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
     private fun signUp() {
         val email = binding.emailSignUp.text.toString()
-        val password = binding.passwordSignUp.text.toString()
+        val password = binding.passwordSignUp1.text.toString()
         val name = binding.usernameSignUp.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty()) {
-            auth.createUserWithEmailAndPassword(email.trim(), password.toString())
+            auth.createUserWithEmailAndPassword(email.trim(), password)
                 .addOnSuccessListener {
                     // Create a user model
                     val userModel: UserModel = UserModel(auth.uid, name, email, password)
 
                     // Save the user model to the Realtime Database
-                    databaseReference.child(auth.uid ?: "").setValue(userModel)
+                    databaseReference.child(auth.uid ?: "" ).setValue(userModel)
 
                     // Navigate to the sign-in fragment
                     val action = SignUpFragmentDirections.switchToSignInFromSignUp(

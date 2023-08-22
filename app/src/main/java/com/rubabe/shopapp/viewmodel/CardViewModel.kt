@@ -3,45 +3,60 @@ package com.rubabe.shopapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.rubabe.shopapp.model.CardModel
 
 class CardViewModel : ViewModel() {
 
-    private val orderDatabaseReference = Firebase.firestore.collection("orders")
-    private val auth = FirebaseAuth.getInstance()
+    private val _cartList = MutableLiveData<List<CardModel>>()
+    val cartList: LiveData<List<CardModel>> = _cartList
 
-    // LiveData for cart items
-    private val _cartItems = MutableLiveData<List<CardModel>>()
-    val cartItems: LiveData<List<CardModel>> = _cartItems
+    private val _totalPrice = MutableLiveData<Double>()
+    val totalPrice: LiveData<Double> = _totalPrice
 
-    // Function to retrieve cart items
-    fun retrieveCartItems() {
-        // Fetch and update _cartItems LiveData
+    private val orderDatabaseReference = FirebaseFirestore.getInstance().collection("orders")
+
+    init {
+        _cartList.value = ArrayList()
+        _totalPrice.value = 0.0
+    }
+
+    fun retrieveCartItems(userId: String) {
         orderDatabaseReference
-            .whereEqualTo("uid", auth.currentUser!!.uid)
+            .whereEqualTo("uid", userId)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val cartList = mutableListOf<CardModel>()
                 var subTotalPrice = 0.0
+
                 for (item in querySnapshot) {
-                    val cartProduct = item.toObject<CardModel>()
+                    val cartProduct = item.toObject(CardModel::class.java)
                     cartList.add(cartProduct)
                     subTotalPrice += cartProduct.price!!.toDouble()
                 }
-                val totalPrice = subTotalPrice + 15.0
-                _cartItems.value = cartList
+
+                val totalPrice = subTotalPrice + 15.0 // Assuming deliveryPrice is 15.0
+                _cartList.value = cartList
+                _totalPrice.value = totalPrice
             }
             .addOnFailureListener {
                 // Handle failure
             }
     }
 
-    // Function to remove a cart item
-    fun removeCartItem(item: CardModel) {
-        // Implement the removal logic
+    fun removeFromCart(item: CardModel) {
+        orderDatabaseReference
+            .whereEqualTo("uid", item.uid)
+            .whereEqualTo("pid", item.pid)
+            .whereEqualTo("size", item.size)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                for (docSnapshot in querySnapshot) {
+                    orderDatabaseReference.document(docSnapshot.id).delete()
+                }
+            }
+            .addOnFailureListener {
+                // Handle failure
+            }
     }
 }

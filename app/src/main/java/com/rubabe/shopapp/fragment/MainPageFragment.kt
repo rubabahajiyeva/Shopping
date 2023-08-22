@@ -52,7 +52,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
         auth = FirebaseAuth.getInstance()
 
 
-        // region implements category Recycler view
 
         categoryList.add("Trending")
         binding.rvMainCategories.setHasFixedSize(true)
@@ -62,17 +61,13 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
         binding.rvMainCategories.adapter = categoryAdapter
         setCategoryList()
 
-        // endregion implements category Recycler view
-
-
-        // region implements products Recycler view
 
         val productLayoutManager = GridLayoutManager(context, 2)
         productsAdapter = BeautyDisplayAdapter(requireContext(), productList, this, this)
         binding.rvMainProductList.layoutManager = productLayoutManager
         binding.rvMainProductList.adapter = productsAdapter
         setProductsData()
-        // endregion implements products Recycler view
+
 
 
         binding.bnvMain.setOnItemSelectedListener {
@@ -84,7 +79,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
                 }
 
                 R.id.likeFragment -> {
-//                    requireActivity().toast("Like Page coming Soon")
+                   //requireActivity().toast("Like Page coming Soon")
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
                         .navigate(R.id.switch_mainFragment_to_likeFragment)
                     true
@@ -232,7 +227,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
 
         val direction = MainPageFragmentDirections.switchMainFragmentToDetailsFragment(item.id!!)
 
-
         Navigation.findNavController(requireView())
             .navigate(direction)
 
@@ -240,10 +234,7 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
 
     override fun onClickLike(item: BeautyDisplayModel) {
 
-        likeDBRef
-            .add(
-                LikeModel(
-                    item.id,
+        likeDBRef.add(LikeModel(item.id,
                     auth.currentUser!!.uid,
                     item.brand,
                     item.description,
@@ -251,7 +242,10 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page),
                     item.name,
                     item.price
                 )
+
             )
+
+
             .addOnSuccessListener {
                 requireActivity().toast("Added to Liked Items")
             }

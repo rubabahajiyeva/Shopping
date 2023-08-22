@@ -59,18 +59,19 @@
         android:id="@+id/tvCartProductSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="07"
         android:layout_marginStart="@dimen/dp_3"
-        app:layout_constraintTop_toTopOf="@id/tvSize"
+        android:text="07"
+        app:layout_constraintBottom_toBottomOf="@id/tvSize"
         app:layout_constraintStart_toEndOf="@id/tvSize"
-        app:layout_constraintBottom_toBottomOf="@id/tvSize" />
+        app:layout_constraintTop_toTopOf="@id/tvSize" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="@dimen/dp_10"
+        android:paddingHorizontal="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline6"
         app:layout_constraintTop_toTopOf="parent">
@@ -104,6 +105,13 @@
             android:textColor="@color/white"
             tools:ignore="TouchTargetSizeCheck" />
 
+        <ImageView
+            android:id="@+id/deleteIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/dp_20"
+            app:srcCompat="@drawable/delete_icon" />
+
 
     </LinearLayout>
 
@@ -120,8 +128,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9"
-        />
+        app:layout_constraintGuide_percent="0.9" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

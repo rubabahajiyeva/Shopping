@@ -6,29 +6,24 @@ import com.rubabe.shopapp.model.CardModel
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
+import com.rubabe.shopapp.fragment.CardPageFragment
 import com.rubabe.shopapp.utils.Delete
-
 
 
 class CardAdapter(
     private val context: Context,
     private val list: ArrayList<CardModel>,
-    private val onLongClickRemove: OnLongClickRemove
-
+    private val onItemClickRemove: OnItemClickListener,
+    private val onQuantityChangeListener: OnQuantityChangeListener
 ) : RecyclerView.Adapter<CardAdapter.ViewHolder>() {
-    var count = 2
+    var count = 1
 
     inner class ViewHolder(val binding: CardProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        private val onSwipeDelete = object : Delete() {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                list.removeAt(position)
-            }
-        }
 
     }
 
@@ -41,6 +36,7 @@ class CardAdapter(
             )
         )
     }
+
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -63,7 +59,8 @@ class CardAdapter(
         holder.binding.btnCartItemAdd.setOnClickListener {
             count++
             holder.binding.tvCartItemCount.text = count.toString()
-
+            onQuantityChangeListener.onQuantityChanged(count)
+           // Notify the listener
         }
 
         holder.binding.btnCartItemRemove.setOnClickListener {
@@ -74,11 +71,11 @@ class CardAdapter(
             }
 
             holder.binding.tvCartItemCount.text = count.toString()
+            onQuantityChangeListener.onQuantityChanged(count) // Notify the listener
         }
 
-        holder.itemView.setOnLongClickListener {
-            onLongClickRemove.onLongRemove(currentItem, position)
-            true
+        holder.binding.deleteIcon.setOnClickListener {
+            onItemClickRemove.onItemClick(currentItem, position)
         }
 
 
@@ -89,9 +86,12 @@ class CardAdapter(
     }
 
 
-    interface OnLongClickRemove {
-        fun onLongRemove(item: CardModel, position: Int)
+    interface OnItemClickListener {
+        fun onItemClick(item: CardModel, position: Int)
     }
 
+    interface OnQuantityChangeListener {
+        fun onQuantityChanged(newCount: Int):Double
+    }
 
 }

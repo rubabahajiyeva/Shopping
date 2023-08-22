@@ -7,6 +7,25 @@
     tools:context=".fragment.ProfileFragment">
 
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/cardToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/profileActualToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/back_icon"
+            app:title="My Basket"
+            app:titleTextColor="@color/main_green"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
+
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="@dimen/dp_100"
@@ -24,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/dp_16"
         android:text=""
         android:textAlignment="center"
@@ -59,13 +78,5 @@
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
-    <ImageView
-        android:id="@+id/backIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_33"
-        android:src="@drawable/back_icon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,7 +56,14 @@
         android:id="@+id/cardPageFragment"
         android:name="com.rubabe.shopapp.fragment.CardPageFragment"
         android:label="CardPageFragment"
-        tools:layout="@layout/fragment_card_page"/>
+        tools:layout="@layout/fragment_card_page">
+        <action
+            android:id="@+id/action_cardPageFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_cardPageFragment_to_likePageFragment"
+            app:destination="@id/likePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/likePageFragment"
         android:name="com.rubabe.shopapp.fragment.LikePageFragment"
@@ -65,6 +72,9 @@
         <action
             android:id="@+id/action_likePageFragment_to_mainPageFragment"
             app:destination="@id/mainPageFragment" />
+        <action
+            android:id="@+id/action_likePageFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainPageFragment"

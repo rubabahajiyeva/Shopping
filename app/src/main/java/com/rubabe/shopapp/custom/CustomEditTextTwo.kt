@@ -53,7 +53,7 @@ class CustomEditTextTwo @JvmOverloads constructor(
         a.recycle()
         updateCompoundDrawables()
 
-        val editText2 = findViewById<EditText>(R.id.password_Sign_Up)
+        val editText2 = findViewById<EditText>(R.id.password_Sign_Up1)
 
         editText2.transformationMethod = AsteriskPasswordTransformationMethod()
 

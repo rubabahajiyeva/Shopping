@@ -66,7 +66,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textOn=""
         android:textOff=""
-        android:background="@drawable/like_icon"
+        android:background="@drawable/unlike_heart_icon"
         android:layout_marginTop="@dimen/dp_5"
         android:layout_marginEnd="@dimen/dp_5" />
 
