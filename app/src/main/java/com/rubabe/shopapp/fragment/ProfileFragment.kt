@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.storage.StorageReference
 import com.rubabe.shopapp.R
 import com.rubabe.shopapp.databinding.FragmentProfileBinding
@@ -35,8 +34,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         bindingFragment = FragmentProfileBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

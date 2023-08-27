@@ -15,7 +15,7 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/switch_signInFragment_to_mainFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/homeFragment" />
         <argument
             android:name="email"
             app:argType="string"
@@ -24,6 +24,9 @@
             android:name="password"
             app:argType="string"
             android:defaultValue='""' />
+        <action
+            android:id="@+id/action_signInFragment_to_splashScreen"
+            app:destination="@id/splashScreen" />
 
 
     </fragment>
@@ -34,10 +37,13 @@
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_mainFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/switchToSignInFromSignUp"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_splashScreen"
+            app:destination="@id/splashScreen" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -51,6 +57,16 @@
         <action
             android:id="@+id/switchfromDetailsFragmentToCardFargment"
             app:destination="@id/cardPageFragment" />
+        <argument
+            android:name="switchId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_detailsFragment_to_likePageFragment"
+            app:destination="@id/likePageFragment" />
+        <action
+            android:id="@+id/action_detailsFragment_to_mainPageFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardPageFragment"
@@ -59,10 +75,20 @@
         tools:layout="@layout/fragment_card_page">
         <action
             android:id="@+id/action_cardPageFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_cardPageFragment_to_likePageFragment"
             app:destination="@id/likePageFragment" />
+        <action
+            android:id="@+id/action_cardPageFragment_to_successfulOrderFragment"
+            app:destination="@id/successfulOrderFragment"
+            app:popUpTo="@id/cardPageFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="switchId"
+            app:argType="integer"
+            android:defaultValue="0" />
+
     </fragment>
     <fragment
         android:id="@+id/likePageFragment"
@@ -71,19 +97,23 @@
         tools:layout="@layout/fragment_like_page" >
         <action
             android:id="@+id/action_likePageFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/action_likePageFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <argument
+            android:name="proid"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
     <fragment
-        android:id="@+id/mainPageFragment"
-        android:name="com.rubabe.shopapp.fragment.MainPageFragment"
+        android:id="@+id/homeFragment"
+        android:name="com.rubabe.shopapp.fragment.HomeFragment"
         android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" >
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/switch_mainFragment_self"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/homeFragment" />
         <action
             android:id="@+id/switch_mainFragment_to_cardFragment"
             app:destination="@id/cardPageFragment" />
@@ -111,6 +141,24 @@
             app:destination="@id/signInFragment" />
         <action
             android:id="@+id/action_profileFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successfulOrderFragment"
+        android:name="com.rubabe.shopapp.fragment.SuccessfulOrderFragment"
+        android:label="fragment_successful_order"
+        tools:layout="@layout/fragment_successful_order" >
+        <action
+            android:id="@+id/action_successfulOrderFragment_to_mainPageFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.rubabe.shopapp.fragment.SplashScreen"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreen_to_mainPageFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

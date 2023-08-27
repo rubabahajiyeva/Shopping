@@ -32,7 +32,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            findNavController().navigate(R.id.switch_signInFragment_to_mainFragment)
+            findNavController().navigate(R.id.action_signInFragment_to_splashScreen)
         }
 
         binding.signInButton.setOnClickListener {
@@ -59,10 +59,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     if (snapshot.exists()) {
                         for (userSnapshot in snapshot.children) {
                             val user = userSnapshot.getValue(UserModel::class.java)
-                            /*  if (user?.userPassword == password) {
-                                  signIn(email, password)
-                                  return
-                              } */
+
                         }
                         requireActivity().toast("Invalid email or password")
                     } else {
@@ -79,10 +76,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
-                findNavController().navigate(R.id.switch_signInFragment_to_mainFragment)
+                findNavController().navigate(R.id.action_signInFragment_to_splashScreen)
             }
             .addOnFailureListener {
-                requireActivity().toast("Sign In Fail")
+                requireActivity().toast("Invalid email or password")
             }
     }
 }

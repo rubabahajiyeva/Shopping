@@ -28,6 +28,7 @@
     <dimen name="dp_202">202dp</dimen>
     <dimen name="sp_24">24sp</dimen>
     <dimen name="dp_250">250dp</dimen>
+    <dimen name="dp_25">25dp</dimen>
     <dimen name="dp_130">130dp</dimen>
     <dimen name="dp_33">33dp</dimen>
 </resources>

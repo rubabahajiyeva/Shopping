@@ -7,4 +7,6 @@ data class BeautyDisplayModel(
     val imageUrl: String? = null,
     val name: String? = null,
     val price: String? = null,
+    var isLiked: Boolean = false
+
 )

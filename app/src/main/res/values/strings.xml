@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
-    <string name="create_new_account_sign_up"><font color="#A59507">Create New Account? </font> <font color="#F6E654">Sign Up </font> </string>
-    <string name="already_account_sign_in"><font color="#A59507">Already have Account ? </font> <font color="#F6E654">Sign In </font> </string>
+    <string name="create_new_account_sign_up"><font color="#FFFFFF">Create New Account? </font> <font color="#F6E654">Sign Up </font> </string>
+    <string name="already_account_sign_in"><font color="#FFFFFF">Already have Account ? </font> <font color="#F6E654">Sign In </font> </string>
     <string name="sign_up">Sign Up</string>
 </resources>

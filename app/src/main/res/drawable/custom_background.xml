@@ -1,0 +1,7 @@
+<!-- custom_shape_top_rounded.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#6F726D" /> <!-- Set the background color here -->
+    <corners
+        android:topLeftRadius="16dp"
+        android:topRightRadius="16dp" />
+</shape>

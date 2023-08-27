@@ -10,11 +10,11 @@
         android:icon="@drawable/favorite_bottom_navigation"/>
     <item
         android:id="@+id/cardFragment"
-        android:title="Shopping"
-        android:icon="@drawable/shopping_bottom_selected"/>
+        android:title="Card"
+        android:icon="@drawable/shopping_bottom_navigation"/>
 
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/profile_bottom_selected"/>
+        android:icon="@drawable/profile_bottom_navigation"/>
 </menu>

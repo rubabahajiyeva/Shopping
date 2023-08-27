@@ -6,7 +6,7 @@ data class ProductOrderModel(
     val imageUrl: String? = null,
     val name: String? = null,
     val size: String? = null,
-    val quantity: Int? = null,
+    var quantity: Int? = null,
     val price: String? = null
 
 )

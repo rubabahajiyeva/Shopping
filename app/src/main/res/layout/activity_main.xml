@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/shop_nav"
-        tools:layout="@layout/fragment_main_page" />
+        tools:layout="@layout/fragment_home" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

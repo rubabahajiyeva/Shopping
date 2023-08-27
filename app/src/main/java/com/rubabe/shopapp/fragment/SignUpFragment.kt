@@ -28,7 +28,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            findNavController().navigate(R.id.action_signUpFragment_to_mainFragment)
+            findNavController().navigate(R.id.action_signUpFragment_to_splashScreen)
         }
 
         binding.signUpButton.setOnClickListener {

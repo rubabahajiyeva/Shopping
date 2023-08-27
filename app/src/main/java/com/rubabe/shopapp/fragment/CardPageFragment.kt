@@ -6,20 +6,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.rubabe.shopapp.R
 import com.rubabe.shopapp.adapter.CardAdapter
 import com.rubabe.shopapp.databinding.FragmentCardPageBinding
 import com.rubabe.shopapp.model.CardModel
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.rubabe.shopapp.utils.Extensions.toast
-import com.rubabe.shopapp.R
 
 
 class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnItemClickListener,
-    CardAdapter.OnQuantityChangeListener {
+    CardAdapter.OnQuantityChangeListener, CardAdapter.OnNavigationClickListener {
 
     private lateinit var binding: FragmentCardPageBinding
     private lateinit var cartList: ArrayList<CardModel>
@@ -29,23 +30,31 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
     private var totalPrice = 0.0
     private var deliveryPrice = 15.0
     private var count = 1.0
+
+    private val args: CardPageFragmentArgs by navArgs()
+
+
     private var orderDatabaseReference = Firebase.firestore.collection("orders")
+
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentCardPageBinding.bind(view)
+
+        var switchId = args.switchId
         auth = FirebaseAuth.getInstance()
 
         binding.cardActualToolbar.setOnClickListener {
 
-            findNavController().navigate(R.id.action_cardPageFragment_to_mainPageFragment)
-
-
-           /* findNavController().popBackStack(R.id.detailsFragment, false)
-
-            findNavController().navigateUp()*/
+            if (switchId == 1) {
+                findNavController().navigate(R.id.action_cardPageFragment_to_mainPageFragment)
+            } else if(switchId == 0){
+                findNavController().navigate(R.id.action_cardPageFragment_to_likePageFragment)
+            }else{
+                requireActivity().supportFragmentManager.popBackStack()
+            }
         }
 
 
@@ -57,7 +66,7 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
         retrieveCartItems()
 
 
-        adapter = CardAdapter(requireContext(), cartList, this, this)
+        adapter = CardAdapter(requireContext(), cartList, this, this, binding.btnCartCheckout, this)
         binding.rvCartItems.adapter = adapter
         binding.rvCartItems.layoutManager = layoutManager
 
@@ -69,13 +78,11 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
 
             if (binding.tvLastTotalPrice.text.toString() == "$0") {
                 binding.tvLastTotalPrice.text = "Min 1 product is Required"
-            } else {
-
-                requireActivity().toast("You've Ordered Products worth ${totalPrice}\n Your Product will be delivered in next 7 days")
-                /* binding.tvLastTotalPrice.text= "$0"
+            }/* else {
+                 binding.tvLastTotalPrice.text= "$0"
                  binding.tvLastSubTotalPrice.text = "$0"
-                 binding.deliveryPriceTV.text = "$0"*/
-            }
+                 binding.deliveryPriceTV.text = "$0"
+            }*/
 
             binding.tvLastTotalPrice.setTextColor(Color.RED)
             adapter.notifyDataSetChanged()
@@ -84,6 +91,7 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun retrieveCartItems(): Double {
 
         orderDatabaseReference
@@ -95,10 +103,11 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
 
                     val totalCount = onQuantityChanged(cartList.size)
                     cartList.add(cartProduct)
-                    subTotalPrice += cartProduct.price!!.toDouble()
+                    //subTotalPrice += cartProduct.price!!.toDouble()
                     println("count sub: $count")
                     println("cartProduct.price: ${cartProduct.price}")
-                    val sub = "$${subTotalPrice}"
+
+                    /*val sub = "$${subTotalPrice}"
                     if (cartList.size == 1) {
                         totalPrice += cartProduct.price.toDouble() + deliveryPrice
                     } else {
@@ -107,50 +116,66 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
 
                     val total = "$${totalPrice}"
                     binding.tvLastSubTotalPrice.text = sub
-                    binding.tvLastTotalPrice.text = total
+                    binding.tvLastTotalPrice.text = total*/
                     binding.tvLastSubTotalItems.text = "SubTotal Items(${cartList.size})"
                     adapter.notifyDataSetChanged()
 
 
                 }
+                println("it works cartList")
+                println(cartList.size)
+                println(cartList)
+                var subTotal = 0.0
 
+                for (cartItem in cartList) {
+                    subTotal += (cartItem.quantity!! * cartItem.price!!.toDouble())
+                }
+
+                subTotalPrice = subTotal;
+                totalPrice = deliveryPrice + subTotal
+                updateTotalPrice()
             }
             .addOnFailureListener {
                 requireActivity().toast(it.localizedMessage!!)
             }
 
+
+
         return subTotalPrice
     }
 
-    override fun onItemClick(item: CardModel, position: Int) {
-        val uid = item.uid
-        val pid = item.pid
-        val size = item.size
 
-        orderDatabaseReference
-            .whereEqualTo("uid", uid)
-            .whereEqualTo("pid", pid)
-            .whereEqualTo("size", size)
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                for (docSnapshot in querySnapshot) {
-                    val docId = docSnapshot.id
-                    orderDatabaseReference.document(docId).delete()
+    override fun onItemClick(item: CardModel) {
+        if (isAdded) {
+            val uid = item.uid
+            val pid = item.pid
+            val size = item.size
+
+            orderDatabaseReference
+                .whereEqualTo("uid", uid)
+                .whereEqualTo("pid", pid)
+                .whereEqualTo("size", size)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    for (item in querySnapshot) {
+                        orderDatabaseReference.document(item.id).delete()
+                        cartList.remove(item.toObject<CardModel>())
+                        adapter.notifyDataSetChanged()
+                    }
+
+                    val itemIndex = cartList.indexOf(item)
+                    if (itemIndex != -1) {
+                        cartList.removeAt(itemIndex)
+                        adapter.notifyItemRemoved(itemIndex)
+                        updateTotalPrice()
+                        requireActivity().toast("Item not found in the cart")
+                    }
+                }
+                .addOnFailureListener {
+                    requireActivity().toast("Failed to remove")
                 }
 
-                val itemIndex = cartList.indexOf(item)
-                if (itemIndex != -1) {
-                    cartList.removeAt(itemIndex)
-                    adapter.notifyItemRemoved(itemIndex)
-                    updateTotalPrice()
-                    requireActivity().toast("Removed Successfully!")
-                } else {
-                    requireActivity().toast("Item not found in the cart.")
-                }
-            }
-            .addOnFailureListener {
-                requireActivity().toast("Failed to remove")
-            }
+        }
     }
 
 
@@ -163,18 +188,12 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
     }
 
     private fun updateTotalPrice() {
-        println("totalPrice: $totalPrice")
-        println("subtotalPrice: $subTotalPrice")
-        val total = "$${(subTotalPrice * count) + deliveryPrice}" // Calculate the new total price
-        println("count first: $count")
-        //   binding.tvLastSubTotalItems.text = "SubTotal Items(${count.toInt()})"
-        println("count second: $count")
-        binding.tvLastTotalPrice.text = total // Update the UI
-        println("total: $total")
+        binding.tvLastSubTotalPrice.text = subTotalPrice.toString()
+        binding.tvLastTotalPrice.text = totalPrice.toString()
+    }
 
-
-        println("cartList: $cartList")
-
+    override fun onNavigateToSuccessFragment() {
+        findNavController().navigate(R.id.action_cardPageFragment_to_successfulOrderFragment)
     }
 
 

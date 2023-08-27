@@ -13,7 +13,7 @@ import com.rubabe.shopapp.R
 
 class MainCategoryAdapter(
     var context:Context,
-    private val list: LinkedHashSet<String>,
+    var list: LinkedHashSet<String>,
     val onClickCategory: CategoryOnClickInterface
 ) : RecyclerView.Adapter<MainCategoryAdapter.ViewHolder>() {
     private var selectedButton: TextView? = null

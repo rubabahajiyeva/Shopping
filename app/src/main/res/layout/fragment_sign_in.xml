@@ -133,17 +133,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="@dimen/dp_32"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/sign_button_background"
         android:fontFamily="@font/manrope_semibold"
         android:onClick="signIn"
         android:text="@string/sign_in"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="@+id/switchToSignUp"
-        app:layout_constraintStart_toStartOf="@+id/switchToSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/switchToSignUp" />
-
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/switchToSignUp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
