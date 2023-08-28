@@ -50,9 +50,9 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
 
             if (switchId == 1) {
                 findNavController().navigate(R.id.action_cardPageFragment_to_mainPageFragment)
-            } else if(switchId == 0){
+            } else if (switchId == 0) {
                 findNavController().navigate(R.id.action_cardPageFragment_to_likePageFragment)
-            }else{
+            } else {
                 requireActivity().supportFragmentManager.popBackStack()
             }
         }
@@ -131,7 +131,7 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
                     subTotal += (cartItem.quantity!! * cartItem.price!!.toDouble())
                 }
 
-                subTotalPrice = subTotal;
+                subTotalPrice = subTotal
                 totalPrice = deliveryPrice + subTotal
                 updateTotalPrice()
             }
@@ -188,8 +188,8 @@ class CardPageFragment : Fragment(R.layout.fragment_card_page), CardAdapter.OnIt
     }
 
     private fun updateTotalPrice() {
-        binding.tvLastSubTotalPrice.text = subTotalPrice.toString()
-        binding.tvLastTotalPrice.text = totalPrice.toString()
+        binding.tvLastSubTotalPrice.text = "$$subTotalPrice"
+        binding.tvLastTotalPrice.text = "$$totalPrice"
     }
 
     override fun onNavigateToSuccessFragment() {

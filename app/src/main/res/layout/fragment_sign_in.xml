@@ -121,7 +121,7 @@
         android:id="@+id/switchToSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginTop="24dp"
         android:text="@string/create_new_account_sign_up"
         android:textSize="@dimen/sp_16"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,17 +133,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/sign_button_background"
         android:fontFamily="@font/manrope_semibold"
         android:onClick="signIn"
         android:text="@string/sign_in"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="@+id/switchToSignUp"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/switchToSignUp" />
+        app:layout_constraintStart_toStartOf="@+id/switchToSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/switchToSignUp" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

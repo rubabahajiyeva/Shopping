@@ -90,7 +90,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
 
         binding.bnvMain.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.mainFragment -> {
+                R.id.homeFragment -> {
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
                         .navigate(R.id.switch_mainFragment_self)
                     true
@@ -112,7 +112,7 @@ class HomeFragment : Fragment(R.layout.fragment_home),
                     true
                 }
 
-                R.id.profile -> {
+                R.id.profileFragment -> {
                     Navigation.findNavController(requireActivity(), R.id.fragmentContainerView)
                         .navigate(R.id.switch_mainFragment_to_profile_Fragment)
                     true

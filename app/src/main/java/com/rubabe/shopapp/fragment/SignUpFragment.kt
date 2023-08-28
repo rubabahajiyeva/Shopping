@@ -36,7 +36,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
 
         binding.switchToSignIn.setOnClickListener {
-            findNavController().navigate(R.id.switchToSignInFromSignUp)
+            findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
         }
     }
 
@@ -52,10 +52,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                     val userModel: UserModel = UserModel(auth.uid, name, email, password)
 
                     // Save the user model to the Realtime Database
-                    databaseReference.child(auth.uid ?: "" ).setValue(userModel)
+                    databaseReference.child(auth.uid ?: "").setValue(userModel)
 
                     // Navigate to the sign-in fragment
-                    val action = SignUpFragmentDirections.switchToSignInFromSignUp(
+                    val action = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment(
                         email = email,
                         password = password
                     )

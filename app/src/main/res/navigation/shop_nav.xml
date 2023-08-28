@@ -16,6 +16,10 @@
         <action
             android:id="@+id/switch_signInFragment_to_mainFragment"
             app:destination="@id/homeFragment" />
+
+        <action
+            android:id="@+id/action_signInFragment_to_splashScreen"
+            app:destination="@id/splashScreen" />
         <argument
             android:name="email"
             app:argType="string"
@@ -24,9 +28,6 @@
             android:name="password"
             app:argType="string"
             android:defaultValue='""' />
-        <action
-            android:id="@+id/action_signInFragment_to_splashScreen"
-            app:destination="@id/splashScreen" />
 
 
     </fragment>
@@ -39,11 +40,11 @@
             android:id="@+id/action_signUpFragment_to_mainFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/switchToSignInFromSignUp"
-            app:destination="@id/signInFragment" />
-        <action
             android:id="@+id/action_signUpFragment_to_splashScreen"
             app:destination="@id/splashScreen" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"

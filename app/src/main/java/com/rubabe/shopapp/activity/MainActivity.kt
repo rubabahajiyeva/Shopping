@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-      //  window.statusBarColor= resources.getColor(R.color.light_gray)
+        //  window.statusBarColor= resources.getColor(R.color.light_gray)
     }
 
 }

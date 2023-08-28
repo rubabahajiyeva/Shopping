@@ -3,11 +3,14 @@ package com.rubabe.shopapp.fragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -16,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 import com.rubabe.shopapp.LikedItemsViewModel
 import com.rubabe.shopapp.utils.Extensions.toast
 import com.rubabe.shopapp.R
+import com.rubabe.shopapp.adapter.BeautyDisplayAdapter
 import com.rubabe.shopapp.adapter.LikeAdapter
 import com.rubabe.shopapp.adapter.LikedOnClickInterface
 import com.rubabe.shopapp.adapter.LikedProductOnClickInterface
@@ -43,6 +47,10 @@ class LikePageFragment() : Fragment(R.layout.fragment_like_page), LikedProductOn
         binding = FragmentLikePageBinding.bind(view)
         auth = FirebaseAuth.getInstance()
         likedProductList = LinkedHashSet()
+
+
+
+
 
 
 
