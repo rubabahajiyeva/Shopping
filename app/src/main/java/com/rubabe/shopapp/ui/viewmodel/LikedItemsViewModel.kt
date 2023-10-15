@@ -1,4 +1,4 @@
-package com.rubabe.shopapp
+package com.rubabe.shopapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 

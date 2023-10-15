@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvCartProductName" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSize"
+        android:id="@+id/tvType"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Type : "
@@ -56,14 +56,14 @@
         app:layout_constraintTop_toBottomOf="@id/tvCartProductPrice" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCartProductSize"
+        android:id="@+id/tvCartProductType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_3"
         android:text="07"
-        app:layout_constraintBottom_toBottomOf="@id/tvSize"
-        app:layout_constraintStart_toEndOf="@id/tvSize"
-        app:layout_constraintTop_toTopOf="@id/tvSize" />
+        app:layout_constraintBottom_toBottomOf="@id/tvType"
+        app:layout_constraintStart_toEndOf="@id/tvType"
+        app:layout_constraintTop_toTopOf="@id/tvType" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

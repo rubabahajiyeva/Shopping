@@ -1,169 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/detailToolbar"
+        <variable name="detailsPageToolbarHeader" type="String" />
+        <variable name="detailsPageFragment" type="com.rubabe.shopapp.ui.fragment.DetailsPageFragment" />
+        <variable name="product" type="com.rubabe.shopapp.data.model.BeautyDisplayModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent">
 
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/detailActualToolbar"
+        <Button
+            android:id="@+id/buttonNavigate"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/back_icon"
+            android:onClick="@{() -> detailsPageFragment.navigate()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/detailToolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonNavigate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/buttonNavigate"
+            app:layout_constraintTop_toTopOf="@+id/buttonNavigate"
+            app:title="@{detailsPageToolbarHeader}"
+            app:titleTextColor="@color/main_green" />
+
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/back_icon"
-            app:title="Details"
-            app:titleTextColor="@color/main_green"
-            />
+            app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
+            app:layout_constraintEnd_toEndOf="@id/detailToolbar"
+            app:layout_constraintStart_toStartOf="@id/detailToolbar"
+            app:layout_constraintTop_toBottomOf="@id/detailToolbar"
+            tools:ignore="SpeakableTextPresentCheck">
 
-
-    </androidx.appcompat.widget.Toolbar>
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
-        app:layout_constraintEnd_toEndOf="@id/detailToolbar"
-        app:layout_constraintStart_toStartOf="@id/detailToolbar"
-        app:layout_constraintTop_toBottomOf="@id/detailToolbar"
-
-        tools:ignore="SpeakableTextPresentCheck">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/ivDetails"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dp_20"
-                android:scaleType="fitCenter"
-                android:src="@drawable/este_lauder_mix"
-                app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/llBottomDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/dp_20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="1"
-        android:elevation="@dimen/dp_10"
-        android:background="@color/light_gray"
-        >
-
-        <TextView
-            android:id="@+id/tvDetailsProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Estee Lauder Night Repair"
-            style="@style/TextAppearance.MaterialComponents.Headline5"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            />
-
-
-        <TextView
-            android:id="@+id/tvDetailsProductDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="4"
-            android:text="Description"
-            android:padding="@dimen/dp_3"
-            android:textColor="@color/main_green"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select type"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSelectSize"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/size_item"
-            />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_20"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/este_lauder_mix"
+                    app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/llBottomDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/light_gray"
+            android:elevation="@dimen/dp_10"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="1">
+
+            <TextView
+                android:id="@+id/tvDetailsProductName"
+                style="@style/TextAppearance.MaterialComponents.Headline5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                >
+                android:text="@{product.brand + product.name}"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
-                <TextView
+
+            <TextView
+                android:id="@+id/tvDetailsProductDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:padding="@dimen/dp_3"
+                android:text="@{product.description}"
+                android:textColor="@color/main_green" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select type"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSelectSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/size_item" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price"
-                    android:textSize="@dimen/sp_16"
-                    android:paddingVertical="@dimen/dp_5"
-                    android:paddingEnd="@dimen/dp_5"
-                    android:textColor="@color/main_green"
-                    />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvDetailsProductPrice"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/dp_5"
+                        android:paddingEnd="@dimen/dp_5"
+                        android:text="Price"
+                        android:textColor="@color/main_green"
+                        android:textSize="@dimen/sp_16" />
+
+                    <TextView
+                        android:id="@+id/tvDetailsProductPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text= '@{"$" +product.price}'
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_22"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:onClick="@{() -> detailsPageFragment.addToCart()}"
+                    android:id="@+id/btnDetailsAddToCart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="120"
-                    android:textSize="@dimen/sp_22"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    />
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/dp_15"
+                    android:text="Add to Cart"
+                    android:textColor="@color/white" />
+
 
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnDetailsAddToCart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add to Cart"
-                android:textColor="@color/white"
-                android:layout_gravity="center_vertical"
-                android:padding="@dimen/dp_15"
-                android:background="@drawable/custom_button"
-                />
-
 
         </LinearLayout>
 
 
-    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

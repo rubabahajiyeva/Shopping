@@ -1,4 +1,4 @@
-package com.rubabe.shopapp.adapter
+package com.rubabe.shopapp.ui.adapter
 
 
 import android.annotation.SuppressLint
@@ -7,12 +7,13 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.rubabe.shopapp.LikedItemsViewModel
+import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
 import com.rubabe.shopapp.R
-import com.rubabe.shopapp.databinding.BeautyDisplayItemBinding
-import com.rubabe.shopapp.model.LikeModel
+import com.rubabe.shopapp.data.model.LikeModel
+import com.rubabe.shopapp.databinding.LikeItemBinding
 
 class LikeAdapter(
     private val context: Context,
@@ -25,24 +26,19 @@ class LikeAdapter(
 ) : RecyclerView.Adapter<LikeAdapter.ViewHolder>() {
 
 
-    inner class ViewHolder(val binding: BeautyDisplayItemBinding) :
+    inner class ViewHolder(val binding: LikeItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            BeautyDisplayItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        val layoutInflater = LayoutInflater.from(context)
+        val binding: LikeItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.like_item, parent, false)
+        return ViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = list.elementAt(position)
-        holder.binding.tvNameBeautyDisplayItem.text = "${currentItem.brand} ${currentItem.name}"
-        holder.binding.tvPriceBeautyDisplayItem.text = "$${currentItem.price}"
+        holder.binding.product = currentItem
         holder.binding.btnLike.backgroundTintList = ColorStateList.valueOf(Color.RED)
 
         Glide
@@ -66,7 +62,6 @@ class LikeAdapter(
                 currentItem.isLiked = true
             } else {
                 holder.binding.btnLike.setBackgroundResource(R.drawable.unlike_heart_icon)
-                // Handle unliking logic here
                 currentItem.pid?.let { it1 -> likedItemsViewModel.setLikedItem(it1, false) }
                 currentItem.isLiked = false
             }

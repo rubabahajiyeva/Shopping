@@ -1,82 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.HomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/rvMainCategories"
+  <data>
+<variable name="homeFragment" type="com.rubabe.shopapp.ui.fragment.HomeFragment" />
+<variable name="beautyDisplayAdapter" type="com.rubabe.shopapp.ui.adapter.BeautyDisplayAdapter" />
+<variable name="categoryAdapter" type="com.rubabe.shopapp.ui.adapter.MainCategoryAdapter" />
+  </data>
+
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
-      android:layout_height="@dimen/dp_70"
-      android:padding="@dimen/dp_10"
-      android:layout_marginTop="@dimen/dp_10"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      tools:listitem="@layout/category_main_item" />
+      android:layout_height="match_parent"
+      tools:context=".ui.fragment.HomeFragment">
 
-  <LinearLayout
-      android:id="@+id/llTextGroup"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="@dimen/dp_10"
-      android:layout_marginEnd="@dimen/dp_10"
-      android:orientation="horizontal"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/rvMainCategories">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMainCategories"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_70"
+        android:padding="@dimen/dp_10"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        android:adapter="@{categoryAdapter}"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/category_main_item" />
 
-    <TextView
-        android:id="@+id/tvMainCategories"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/llTextGroup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_5"
-        android:layout_weight="1"
-        android:text="Trending"
-        android:textColor="@color/main_green"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvMainCategories">
 
-    <TextView
-        android:id="@+id/tvSeeAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/dp_5"
-        android:paddingStart="@dimen/dp_20"
-        android:paddingTop="@dimen/dp_5"
-        android:background="@drawable/see_all_background"
-        android:textColor="@color/main_green"
-        android:text="See All"
-        android:textSize="@dimen/sp_18" />
-  </LinearLayout>
+      <TextView
+          android:id="@+id/tvMainCategories"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="@dimen/dp_5"
+          android:layout_weight="1"
+          android:text="Trending"
+          android:textColor="@color/main_green"
+          android:textSize="18sp"
+          android:textStyle="bold" />
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/rvMainProductList"
-      android:layout_width="0dp"
-      android:layout_height="0dp"
-      android:layout_margin="@dimen/dp_10"
-      android:padding="@dimen/dp_10"
-      app:layout_constraintBottom_toTopOf="@+id/bnv_main"
-      app:layout_constraintEnd_toEndOf="@id/llTextGroup"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toStartOf="@id/llTextGroup"
-      app:layout_constraintTop_toBottomOf="@id/llTextGroup"
-      app:layout_constraintVertical_bias="0.0"
-      tools:listitem="@layout/beauty_display_item" />
+      <androidx.appcompat.widget.AppCompatButton
+          android:id="@+id/tvSeeAll"
+          android:layout_width="80dp"
+          android:layout_height="40dp"
+          android:layout_marginEnd="@dimen/dp_5"
+          android:textAllCaps="false"
+          android:onClick="@{() -> homeFragment.seeAll()}"
+          android:background="@drawable/see_all_background"
+          android:textColor="@color/main_green"
+          android:text="See All"
+          android:textSize="@dimen/sp_18" />
+    </LinearLayout>
 
-  <com.google.android.material.bottomnavigation.BottomNavigationView
-      android:id="@+id/bnv_main"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      app:menu="@menu/bottom_nav_menu"
-      app:itemIconTint="@color/bottom_menu_icon_tint"
-      app:itemTextColor="@color/bottom_menu_icon_tint"
-      app:labelVisibilityMode="labeled"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMainProductList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        android:adapter="@{beautyDisplayAdapter}"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/dp_10"
+        android:padding="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/llTextGroup"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@id/llTextGroup"
+        app:layout_constraintTop_toBottomOf="@id/llTextGroup"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/beauty_display_item" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

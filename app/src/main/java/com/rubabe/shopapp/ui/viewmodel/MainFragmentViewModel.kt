@@ -1,4 +1,4 @@
-package com.rubabe.shopapp.viewmodel
+package com.rubabe.shopapp.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,12 +7,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.rubabe.shopapp.model.BeautyDisplayModel
+import com.rubabe.shopapp.data.model.BeautyDisplayModel
 
 class MainFragmentViewModel : ViewModel() {
 
     private var productList = MutableLiveData<ArrayList<BeautyDisplayModel>>()
-    private var categoryList = MutableLiveData<LinkedHashSet<String>>()
+    private var categoryList = MutableLiveData<LinkedHashSet<BeautyDisplayModel>>()
     private val errorMessage = MutableLiveData<String>()
     private lateinit var databaseReference: DatabaseReference
 
@@ -20,7 +20,7 @@ class MainFragmentViewModel : ViewModel() {
         return productList
     }
 
-    fun observeCategory(): MutableLiveData<LinkedHashSet<String>> {
+    fun observeCategory(): MutableLiveData<LinkedHashSet<BeautyDisplayModel>> {
         return categoryList
     }
 
@@ -32,21 +32,22 @@ class MainFragmentViewModel : ViewModel() {
         databaseReference = ref
     }
 
-    fun observeCategoryList(): LiveData<LinkedHashSet<String>> {
-        return categoryList
-    }
-
 
     fun setCategoryList() {
-        val newCategoryList = LinkedHashSet<String>()
-        newCategoryList.add("Trending")
+        val newCategoryList = LinkedHashSet<BeautyDisplayModel>()
+
+        // Create a BeautyDisplayModel instance for the "Trending" category
+        val trendingCategory = BeautyDisplayModel()
+        trendingCategory.brand = "Trending"
+        newCategoryList.add(trendingCategory)
+       // newCategoryList.add("Trending")
 
         val valueEvent = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (dataSnapshot in snapshot.children) {
                         val products = dataSnapshot.getValue(BeautyDisplayModel::class.java)
-                        newCategoryList.add(products!!.brand!!)
+                        newCategoryList.add(products!!)
                     }
                 }
 
@@ -59,6 +60,7 @@ class MainFragmentViewModel : ViewModel() {
         }
         databaseReference.addValueEventListener(valueEvent)
     }
+
 
 
     fun setProductsData() {

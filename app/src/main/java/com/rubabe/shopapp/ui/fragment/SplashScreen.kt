@@ -1,5 +1,6 @@
-package com.rubabe.shopapp.fragment
+package com.rubabe.shopapp.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,8 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.rubabe.shopapp.R
+import com.rubabe.shopapp.activity.MainActivity
 import com.rubabe.shopapp.databinding.FragmentSplashScreenBinding
 
 
@@ -19,7 +19,7 @@ class SplashScreen : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSplashScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -27,9 +27,6 @@ class SplashScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set up any animations or transitions here
-
-        // Simulate a delay (e.g., 2 seconds) to showcase the splash screen
         Handler(Looper.getMainLooper()).postDelayed({
             // Navigate to the next screen after the delay
             navigateToNextScreen()
@@ -37,7 +34,11 @@ class SplashScreen : Fragment() {
     }
 
     private fun navigateToNextScreen() {
-        // Use the NavController to navigate to the next fragment
-        findNavController().navigate(R.id.action_splashScreen_to_mainPageFragment)
+
+        val intent = Intent(requireContext(), MainActivity::class.java)
+
+        startActivity(intent)
+
+        requireActivity().finish()
     }
 }

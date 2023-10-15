@@ -1,31 +1,33 @@
-package com.rubabe.shopapp.fragment
+package com.rubabe.shopapp.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.StorageReference
 import com.rubabe.shopapp.R
+import com.rubabe.shopapp.activity.SignActivity
 import com.rubabe.shopapp.databinding.FragmentProfileBinding
-import com.rubabe.shopapp.model.UserModel
+import com.rubabe.shopapp.data.model.UserModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    private var bindingFragment: FragmentProfileBinding? = null
-    private val binding get() = bindingFragment!!
-    private lateinit var auth: FirebaseAuth
-    private lateinit var username: String
+    private lateinit var binding: FragmentProfileBinding
+    //private lateinit var viewModel: ProfileViewModel
+
+    private var auth = FirebaseAuth.getInstance()
     private lateinit var databaseReference: DatabaseReference
-    private lateinit var storageReference: StorageReference
 
 
     override fun onCreateView(
@@ -33,25 +35,27 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        bindingFragment = FragmentProfileBinding.inflate(inflater, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+
+        binding.profileFragment = this
+        binding.profileToolbarHeader = "My Profile"
+
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        /*val tempViewModel: ProfileViewModel by viewModels()
+        viewModel = tempViewModel*/
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        auth = FirebaseAuth.getInstance()
+
         databaseReference = FirebaseDatabase.getInstance().reference
-        binding.profileActualToolbar.title = "My Profile"
 
-        binding.exitAccount.setOnClickListener {
-            auth.signOut()
-            findNavController().navigate(R.id.switch_from_profilefragment_to_signinfragment)
-        }
-
-        binding.profileActualToolbar.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_mainPageFragment)
-        }
 
         // Retrieve and display the username
         val userId = auth.currentUser?.uid
@@ -74,8 +78,15 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    fun exitAccount() {
+        auth.signOut()
+        val intent = Intent(requireContext(), SignActivity::class.java)
+        startActivity(intent)
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
-        bindingFragment = null
+        binding
     }
 }

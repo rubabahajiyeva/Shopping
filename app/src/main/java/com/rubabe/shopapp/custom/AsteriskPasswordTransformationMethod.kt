@@ -32,7 +32,7 @@ class AsteriskPasswordTransformationMethod : TransformationMethod {
             return source.subSequence(
                 startIndex,
                 endIndex
-            ) // Return the original text for copying, cutting, etc.
+            )
         }
     }
 }

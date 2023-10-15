@@ -1,4 +1,4 @@
-package com.rubabe.shopapp.fragment
+package com.rubabe.shopapp.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.rubabe.shopapp.utils.Extensions.toast
 import com.rubabe.shopapp.R
 import com.rubabe.shopapp.databinding.FragmentSignUpBinding
-import com.rubabe.shopapp.model.UserModel
+import com.rubabe.shopapp.data.model.UserModel
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
@@ -27,16 +27,16 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             .getReference("users") // Change this to the appropriate location in your Realtime Database
 
         val currentUser = auth.currentUser
-        if (currentUser != null) {
-            findNavController().navigate(R.id.action_signUpFragment_to_splashScreen)
-        }
+        /*  if (currentUser != null) {
+              findNavController().navigate(R.id.action_signUpFragment2_to_splashScreen2)
+          }*/
 
         binding.signUpButton.setOnClickListener {
             signUp()
         }
 
         binding.switchToSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
+            findNavController().navigate(R.id.action_signUpFragment2_to_signInFragment2)
         }
     }
 
@@ -52,14 +52,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                     val userModel: UserModel = UserModel(auth.uid, name, email, password)
 
                     // Save the user model to the Realtime Database
-                    databaseReference.child(auth.uid ?: "").setValue(userModel)
+                    databaseReference.child(auth.uid ?: "" ).setValue(userModel)
 
                     // Navigate to the sign-in fragment
-                    val action = SignUpFragmentDirections.actionSignUpFragmentToSignInFragment(
-                        email = email,
-                        password = password
-                    )
-                    findNavController().navigate(action)
+                    findNavController().navigate(R.id.action_signUpFragment2_to_splashScreen2)
                 }
                 .addOnFailureListener {
                     requireActivity().toast("Sign Up Fail")

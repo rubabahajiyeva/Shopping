@@ -47,7 +47,7 @@ class CustomEditTextTwo @JvmOverloads constructor(
         val colorText = typedArray.getResourceId(0, R.color.black)
         typedArray.recycle()
 
-        // Set the hint text color using the color resource
+
         setHintTextColor(ContextCompat.getColor(context, colorHint))
         setTextColor(ContextCompat.getColor(context, colorText))
         a.recycle()
@@ -165,7 +165,7 @@ class CustomEditTextTwo @JvmOverloads constructor(
         )
     }
 
-    fun setDrawableClickListener(listener: DrawableClickListener) {
+    private fun setDrawableClickListener(listener: DrawableClickListener) {
         clickListener = listener
     }
 

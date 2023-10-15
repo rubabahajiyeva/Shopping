@@ -1,23 +1,18 @@
-package com.rubabe.shopapp.adapter
+package com.rubabe.shopapp.ui.adapter
 
 import android.annotation.SuppressLint
 import com.rubabe.shopapp.databinding.CardProductItemBinding
-import com.rubabe.shopapp.model.CardModel
+import com.rubabe.shopapp.data.model.CardModel
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.navigation.NavigationBarView.OnItemSelectedListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.rubabe.shopapp.fragment.CardPageFragment
-import com.rubabe.shopapp.model.ProductOrderModel
-import com.rubabe.shopapp.utils.Delete
-import com.rubabe.shopapp.utils.Extensions.toast
+import com.rubabe.shopapp.data.model.ProductOrderModel
 
 
 class CardAdapter(
@@ -62,7 +57,7 @@ class CardAdapter(
         holder.binding.tvCartProductName.text = currentItem.name
         holder.binding.tvCartProductPrice.text = "$${currentItem.price}"
         holder.binding.tvCartItemCount.text = currentItem.quantity.toString()
-        holder.binding.tvCartProductSize.text = currentItem.size
+        holder.binding.tvCartProductType.text = currentItem.type
 
         count = holder.binding.tvCartItemCount.text.toString().toInt()
 
@@ -127,7 +122,7 @@ class CardAdapter(
                         }
                     }
                 }
-                .addOnFailureListener { exception ->
+                .addOnFailureListener {
                     Toast.makeText(context, "Min 1 product is Required", Toast.LENGTH_SHORT).show()
                 }
         }

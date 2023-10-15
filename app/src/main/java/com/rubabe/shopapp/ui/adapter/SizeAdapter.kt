@@ -1,4 +1,4 @@
-package com.rubabe.shopapp.adapter
+package com.rubabe.shopapp.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rubabe.shopapp.databinding.SizeItemBinding
 
 class SizeAdapter(
-    private val context: Context,
     private val list: ArrayList<String>,
     private val onClickSize: SizeOnClickInterface
 ) : RecyclerView.Adapter<SizeAdapter.ViewHolder>() {
 
-    private var selectedItem: Int = -1
-    private var lastSelectedItem: Int = -1
 
 
     inner class ViewHolder(val binding: SizeItemBinding) : RecyclerView.ViewHolder(binding.root)

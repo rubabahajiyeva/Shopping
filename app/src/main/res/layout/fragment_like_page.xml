@@ -1,72 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.LikePageFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="likeToolbarHeader" type="String" />
+        <variable name="likePageFragment" type="com.rubabe.shopapp.ui.fragment.LikePageFragment" />
+          <variable  name="likeAdapter" type="com.rubabe.shopapp.ui.adapter.LikeAdapter" />
+    </data>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/likeToolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.LikePageFragment">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/likeActualToolbar"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/likeToolbar"
             android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextColor="@color/main_green">
+
+            <!-- Centered Title -->
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@{likeToolbarHeader}"
+                android:textColor="@color/main_green"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMainProductList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:adapter="@{likeAdapter}"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/dp_10"
+            android:padding="@dimen/dp_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/likeToolbar"
+            app:layout_constraintHorizontal_bias="0.50"
+            app:layout_constraintStart_toStartOf="@id/likeToolbar"
+            app:layout_constraintTop_toBottomOf="@id/likeToolbar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/like_item" />
+
+        <TextView
+            android:id="@+id/noItem"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/back_icon"
-            app:title="Liked Products"
-            app:titleTextColor="@color/main_green"/>
-    </androidx.appcompat.widget.Toolbar>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="No liked items yet"
+            android:textAlignment="center"
+            android:textColor="@color/main_green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sleepImage" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLikedProducts"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/dp_20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/likeToolbar"
-        tools:listitem="@layout/like_item" />
-
-    <TextView
-        android:id="@+id/noItem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="No liked items yet"
-        android:textAlignment="center"
-        android:textColor="@color/main_green"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleepImage" />
-
-    <ImageView
-        android:id="@+id/sleepImage"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/sleepy_smiley"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="w,3:4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/likeToolbar"
-        app:layout_constraintVertical_bias="0.444" />
+        <ImageView
+            android:id="@+id/sleepImage"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/sleepy_smiley"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="w,3:4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.444" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

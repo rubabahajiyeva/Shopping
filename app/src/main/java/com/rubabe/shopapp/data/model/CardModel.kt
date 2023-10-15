@@ -1,4 +1,4 @@
-package com.rubabe.shopapp.model
+package com.rubabe.shopapp.data.model
 
 data class CardModel(
     val pid: String? = null,
@@ -6,7 +6,7 @@ data class CardModel(
     val imageUrl: String? = null,
     val name: String? = null,
     val price: String? = null,
-    val size: String? = null,
-    var quantity: Int? = null
+    val type: String? = null,
+    var quantity: Int? = null,
 
 )

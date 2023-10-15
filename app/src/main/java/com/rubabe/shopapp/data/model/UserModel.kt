@@ -1,4 +1,4 @@
-package com.rubabe.shopapp.model
+package com.rubabe.shopapp.data.model
 
 
 data class UserModel(

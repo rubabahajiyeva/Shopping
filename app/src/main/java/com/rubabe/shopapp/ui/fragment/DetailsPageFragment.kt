@@ -1,10 +1,14 @@
-package com.rubabe.shopapp.fragment
+package com.rubabe.shopapp.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -18,21 +22,22 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.rubabe.shopapp.R
-import com.rubabe.shopapp.adapter.SizeAdapter
-import com.rubabe.shopapp.adapter.SizeOnClickInterface
+import com.rubabe.shopapp.ui.adapter.SizeAdapter
+import com.rubabe.shopapp.ui.adapter.SizeOnClickInterface
 import com.rubabe.shopapp.databinding.FragmentDetailsPageBinding
-import com.rubabe.shopapp.model.BeautyDisplayModel
-import com.rubabe.shopapp.model.ProductOrderModel
+import com.rubabe.shopapp.data.model.BeautyDisplayModel
+import com.rubabe.shopapp.data.model.ProductOrderModel
 import com.rubabe.shopapp.utils.Extensions.toast
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClickInterface {
+@AndroidEntryPoint
+class DetailsPageFragment : Fragment(), SizeOnClickInterface {
 
     private lateinit var binding: FragmentDetailsPageBinding
+    //private lateinit var viewModel: DetailsViewModel
     private lateinit var productDatabaseReference: DatabaseReference
     private lateinit var sizeAdapter: SizeAdapter
     private lateinit var auth: FirebaseAuth
-    private val args: DetailsPageFragmentArgs by navArgs()
 
     private val orderDatabaseReference = Firebase.firestore.collection("orders")
 
@@ -44,29 +49,36 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
     private lateinit var orderPrice: String
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_details_page, container, false)
+
+        binding.detailsPageFragment = this
+        binding.detailsPageToolbarHeader = "Details"
+        return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+       /* val tempViewModel: DetailsViewModel by viewModels()
+        viewModel = tempViewModel*/
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentDetailsPageBinding.bind(view)
 
+        val bundle: DetailsPageFragmentArgs by navArgs()
+        val productId = bundle.productId
         productDatabaseReference = FirebaseDatabase.getInstance().getReference("products")
-
-        val productId = args.productId
-        val switchId = args.switchId
 
 
         auth = FirebaseAuth.getInstance()
 
-        currentUID = auth.currentUser!!.uid
-
-        binding.detailActualToolbar.setNavigationOnClickListener {
-            //Navigation.findNavController(requireView()).popBackStack()
-
-            if (switchId == 0) {
-                findNavController().navigate(R.id.action_detailsFragment_to_likePageFragment)
-            } else {
-                findNavController().navigate(R.id.action_detailsFragment_to_mainPageFragment)
-            }
-        }
+        currentUID = auth.currentUser?.uid ?: ""
 
 
         // region implements firebase product display
@@ -87,9 +99,8 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
                             orderName = products.name!!
                             orderPrice = products.price!!
 
-                            binding.tvDetailsProductPrice.text = "$${products.price}"
-                            binding.tvDetailsProductName.text = "${products.brand} ${products.name}"
-                            binding.tvDetailsProductDescription.text = products.description
+                            binding.product = products
+
                         }
 
 
@@ -116,56 +127,17 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
         sizeList.add("Medium")
         sizeList.add("Deep")
 
-        sizeAdapter = SizeAdapter(requireContext(), sizeList, this)
+        sizeAdapter = SizeAdapter(sizeList, this)
         binding.rvSelectSize.adapter = sizeAdapter
 
-        println("switchId: $switchId")
-        binding.btnDetailsAddToCart.setOnClickListener {
-
-            // TODO: Add Data to FireBase FireStore Database
-
-            val orderedProduct = ProductOrderModel(
-                currentUID,
-                productId,
-                orderImageUrl,
-                orderName,
-                orderSize,
-                orderQuantity,
-                orderPrice
-            )
-
-            if (orderSize.isNullOrBlank()) {
-                requireActivity().toast("Select Type")
-            } else {
-                addDataToOrdersDatabase(orderedProduct)
-
-                val direction =
-                    DetailsPageFragmentDirections.switchfromDetailsFragmentToCardFargment(switchId)
-
-                Navigation.findNavController(requireView())
-                    .navigate(direction)
-            }
-
-
-        }
 
     }
 
     private fun addDataToOrdersDatabase(orderedProduct: ProductOrderModel) {
 
-        /*orderDatabaseReference.add(orderedProduct).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                requireActivity().toast("Product added to the basket")
-            } else {
-                requireActivity().toast(task.exception!!.localizedMessage!!)
-            }
-        }*/
-
         orderDatabaseReference.whereEqualTo("uid", orderedProduct.uid)
             .whereEqualTo("pid", orderedProduct.pid).get()
             .addOnSuccessListener { querySnapshot ->
-                println("is empty? " + querySnapshot.isEmpty)
-                println("doc size: " + querySnapshot.documents.size)
                 if (querySnapshot != null) {
                     if (querySnapshot.documents.isNotEmpty()) {
                         val document = querySnapshot.documents[0]
@@ -202,5 +174,50 @@ class DetailsPageFragment : Fragment(R.layout.fragment_details_page), SizeOnClic
         orderSize = button.text.toString()
         requireActivity().toast("${button.text} Selected")
     }
+
+
+    fun addToCart() {
+        val bundle: DetailsPageFragmentArgs by navArgs()
+        val switchId = bundle.switchId
+        val productId = bundle.productId
+        val orderedProduct = ProductOrderModel(
+            currentUID,
+            productId,
+            orderImageUrl,
+            orderName,
+            orderSize,
+            orderQuantity,
+            orderPrice
+        )
+
+        if (orderSize.isNullOrBlank()) {
+            requireActivity().toast("Select Type")
+        } else {
+            addDataToOrdersDatabase(orderedProduct)
+
+            val direction =
+                DetailsPageFragmentDirections.switchfromDetailsFragmentToCardFargment(switchId)
+
+            Navigation.findNavController(requireView())
+                .navigate(direction)
+        }
+
+    }
+
+
+    fun navigate() {
+
+        val bundle: DetailsPageFragmentArgs by navArgs()
+        val switchId = bundle.switchId
+        //Navigation.findNavController(requireView()).popBackStack()
+        println("switchId: $switchId")
+        if (switchId == 0) {
+            findNavController().navigate(R.id.action_detailsFragment_to_likePageFragment)
+        } else {
+            findNavController().navigate(R.id.action_detailsFragment_to_mainPageFragment)
+        }
+
+    }
+
 
 }
