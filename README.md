@@ -10,8 +10,21 @@ Shopping App is an application that allows you to have makeup shopping. You can 
 - [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
 # Outputs 🖼
 
+| Sign In Screen                 | Sign Up Screen                 |
+| ------------------------------ | ------------------------------ |
+| ![Sign In Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/3a00a011-b5d8-4ba8-9b87-c2b1da81d1e2) | ![Sign Up Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/75b77cb2-8aa3-4acb-bf3c-f2b845bc6212) |
+
+| Home Screen                           | Favorite Screen                       |
+| ------------------------------------- | ------------------------------------- |
+| ![Home Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/e7896173-2544-4c29-900a-cf042271b88c) | ![Favorite Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/24a43105-79ef-4ea2-a3e9-6b7ba04d3653) |
+
+
+| Detail Screen                         | Card Screen                           |
+| ------------------------------------- | ------------------------------------- |
+| ![Detail Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/a7f04581-31bd-4ac7-a338-4ed1a117ea15) | ![Card Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/619ebb3f-dafe-4725-9db4-6db6b8749317) |
+
 <div>
-  <img src="(https://github.com/rubabahajiyeva/Shopping/assets/114312929/4f402306-3218-4478-88f3-9eacdc354103" alt="Image Alt Text" width="100" style="float: left; margin-right: 10px;">
+  <img src="(https://github.com/rubabahajiyeva/Shopping/assets/114312929/4f402306-3218-4478-88f3-9eacdc354103)" alt="Image Alt Text" width="100" style="float: left; margin-right: 10px;">
   <p><strong>Profile Screen</strong></p>
 </div>
 
