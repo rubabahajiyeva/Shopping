@@ -10,6 +10,13 @@ Shopping App is an application that allows you to have makeup shopping. You can 
 - [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
 # Outputs 🖼
 ![Sign in Screen](https://github.com/rubabahajiyeva/Shopping/assets/114312929/75b77cb2-8aa3-4acb-bf3c-f2b845bc6212)
+
+<div>
+  <img src="https://github.com/rubabahajiyeva/Shopping/assets/114312929/75b77cb2-8aa3-4acb-bf3c-f2b845bc6212" alt="Image Alt Text" width="100" style="float: left; margin-right: 10px;">
+  <p><strong>Sign in Screen</strong></p>
+</div>
+
+
 <div>
   <img src="https://github.com/rubabahajiyeva/Shopping/assets/114312929/3a00a011-b5d8-4ba8-9b87-c2b1da81d1e2" alt="Image Alt Text" width="100" style="float: left; margin-right: 10px;">
   <p><strong>Sign Up Screen</strong></p>
