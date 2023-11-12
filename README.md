@@ -24,8 +24,6 @@ Shopping App is an application that allows you to have makeup shopping. You can 
 | ![Detail Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/a7f04581-31bd-4ac7-a338-4ed1a117ea15) | ![Card Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/619ebb3f-dafe-4725-9db4-6db6b8749317) |
 
 <div>
-  <img src="https://github.com/rubabahajiyeva/Shopping/assets/114312929/4f402306-3218-4478-88f3-9eacdc354103" alt="Image Alt Text" width="100" style="float: left; margin-right: 10px;">
+  <img src="https://github.com/rubabahajiyeva/Shopping/assets/114312929/f6ea1fe5-1baa-4218-9f87-eef4f36596cd" alt="Image Alt Text" width="100" style="float: left; margin-right: 10px;">
   <p><strong>Profile Screen</strong></p>
 </div>
-
-
