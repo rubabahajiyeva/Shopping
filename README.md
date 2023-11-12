@@ -5,5 +5,7 @@ Shopping App is an application that allows you to have makeup shopping. You can 
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-
+- [Firebase Authentication](https://firebase.google.com/docs/auth/android/start)
+- [FireStore Database](https://firebase.google.com/docs/firestore/quickstart#android)
+- [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
 
