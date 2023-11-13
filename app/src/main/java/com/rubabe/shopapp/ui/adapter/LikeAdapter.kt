@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.rubabe.shopapp.data.model.LikeModel
 import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
 import com.rubabe.shopapp.R
-import com.rubabe.shopapp.data.model.LikeModel
 import com.rubabe.shopapp.databinding.LikeItemBinding
 
 class LikeAdapter(

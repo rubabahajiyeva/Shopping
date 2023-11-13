@@ -6,13 +6,14 @@
     <data>
         <variable name="likeToolbarHeader" type="String" />
         <variable name="likePageFragment" type="com.rubabe.shopapp.ui.fragment.LikePageFragment" />
-          <variable  name="likeAdapter" type="com.rubabe.shopapp.ui.adapter.LikeAdapter" />
+        <variable  name="likeAdapter" type="com.rubabe.shopapp.ui.adapter.LikeAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.fragment.LikePageFragment">
+        tools:context=".ui.fragment.LikePageFragment"
+        android:background="#EDE1EC">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/likeToolbar"

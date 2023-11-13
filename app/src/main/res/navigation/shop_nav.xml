@@ -96,6 +96,24 @@
             android:name="username"
             app:argType="string"
             android:defaultValue='""' />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_balanceFragment"
+            app:destination="@id/balanceFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_privacyAndPolicyFragment"
+            app:destination="@id/privacyAndPolicyFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/successfulOrderFragment"
@@ -106,4 +124,48 @@
             android:id="@+id/action_successfulOrderFragment_to_mainPageFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
+
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.BalanceFragment"
+        android:label="fragment_balance"
+        tools:layout="@layout/fragment_balance" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" >
+        <action
+            android:id="@+id/action_helpFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyAndPolicyFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.PrivacyAndPolicyFragment"
+        android:label="fragment_privacy_and_policy"
+        tools:layout="@layout/fragment_privacy_and_policy" >
+        <action
+            android:id="@+id/action_privacyAndPolicyFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

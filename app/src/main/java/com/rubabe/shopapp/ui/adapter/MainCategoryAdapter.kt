@@ -1,15 +1,14 @@
 package com.rubabe.shopapp.ui.adapter
 
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import android.content.Context
+import com.rubabe.shopapp.data.model.BeautyDisplayModel
 import com.rubabe.shopapp.R
 import com.rubabe.shopapp.databinding.CategoryMainItemBinding
-import com.rubabe.shopapp.data.model.BeautyDisplayModel
-import com.rubabe.shopapp.ui.viewmodel.HomeViewModel
 
 
 class MainCategoryAdapter(

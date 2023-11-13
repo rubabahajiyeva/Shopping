@@ -24,6 +24,9 @@
             android:name="password"
             app:argType="string"
             android:defaultValue='""' />
+        <action
+            android:id="@+id/action_signInFragment_to_forgetFragment"
+            app:destination="@id/forgetFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -42,4 +45,13 @@
         android:name="com.rubabe.shopapp.ui.fragment.SplashScreen"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
+    <fragment
+        android:id="@+id/forgetFragment"
+        android:name="com.rubabe.shopapp.ui.fragment.ForgetFragment"
+        android:label="fragment_forget"
+        tools:layout="@layout/fragment_forget" >
+        <action
+            android:id="@+id/action_forgetFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
 </navigation>

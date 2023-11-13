@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -15,64 +16,95 @@
         android:elevation="@dimen/dp_10"
         android:orientation="vertical"
         android:padding="@dimen/dp_10"
+
         app:layout_constraintDimensionRatio="2:1">
 
-
-        <ImageView
-            android:id="@+id/ivBeautyDisplayItem"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/light_gray"
-            android:padding="@dimen/dp_10"
-            android:scaleType="fitXY"
-            android:src="@drawable/este_lauder_mix"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@id/guideline2"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/CustomCardViewStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardCornerRadius="30dp"
+            app:cardPreventCornerOverlap="true"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/tvNameBeautyDisplayItem"
-            style="@style/TextAppearance.MaterialComponents.Subtitle1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{product.brand+" "+product.name}'
-            android:textColor="@color/grey"
-            app:layout_constraintStart_toStartOf="@id/ivBeautyDisplayItem"
-            app:layout_constraintTop_toBottomOf="@id/ivBeautyDisplayItem" />
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/ivBeautyDisplayItem"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:riv_corner_radius_top_left="@dimen/dp_30"
+                    app:riv_corner_radius_bottom_right="0dp"
+                    app:riv_corner_radius_top_right="30dp"
+                    app:riv_corner_radius_bottom_left="0dp"
+                    android:scaleType="fitXY"
+                    app:riv_border_color="#333333"
+                    app:riv_mutate_background="true"
+                    android:src="@drawable/este_lauder_mix"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toStartOf="@id/guideline2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-        <TextView
-            android:id="@+id/tvPriceBeautyDisplayItem"
-            style="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/grey"
-            app:layout_constraintStart_toStartOf="@id/tvNameBeautyDisplayItem"
-            app:layout_constraintTop_toBottomOf="@id/tvNameBeautyDisplayItem"
-            android:text='@{"$"+product.price}' />
+                <TextView
+                    android:id="@+id/tvNameBeautyDisplayItem"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
+                    android:maxLength="15"
+                    android:maxLines="2"
+                    android:text='@{product.name}'
+                    android:textColor="@color/grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/ivBeautyDisplayItem"
+                    app:layout_constraintTop_toBottomOf="@id/ivBeautyDisplayItem" />
 
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="1" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLike"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:minHeight="@dimen/dp_48"
-            android:minWidth="@dimen/dp_48"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/unlike_heart_icon"
-            android:layout_marginTop="@dimen/dp_5"
-            android:layout_marginEnd="@dimen/dp_5" />
+                <TextView
+                    android:id="@+id/tvPriceBeautyDisplayItem"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text='@{"$"+product.price}'
+                    android:textColor="@color/grey"
+                    app:layout_constraintEnd_toEndOf="@+id/tvNameBeautyDisplayItem"
+                    app:layout_constraintStart_toStartOf="@+id/tvNameBeautyDisplayItem"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNameBeautyDisplayItem" />
 
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="1" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLike"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/unlike_heart_icon"
+                    android:minWidth="@dimen/dp_48"
+                    android:minHeight="@dimen/dp_48"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

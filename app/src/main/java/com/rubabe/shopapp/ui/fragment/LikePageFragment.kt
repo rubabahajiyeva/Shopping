@@ -16,14 +16,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
-import com.rubabe.shopapp.utils.Extensions.toast
-import com.rubabe.shopapp.R
+import com.rubabe.shopapp.data.model.LikeModel
 import com.rubabe.shopapp.ui.adapter.LikeAdapter
 import com.rubabe.shopapp.ui.adapter.LikedOnClickInterface
 import com.rubabe.shopapp.ui.adapter.LikedProductOnClickInterface
+import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
+import com.rubabe.shopapp.utils.Extensions.toast
+import com.rubabe.shopapp.R
 import com.rubabe.shopapp.databinding.FragmentLikePageBinding
-import com.rubabe.shopapp.data.model.LikeModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,7 +31,8 @@ class LikePageFragment() : Fragment(), LikedProductOnClickInterface,
     LikedOnClickInterface {
     private lateinit var likedItemsViewModel: LikedItemsViewModel
 
-    private lateinit var binding: FragmentLikePageBinding
+    private var _binding: FragmentLikePageBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: LikedItemsViewModel
     private lateinit var auth: FirebaseAuth
     private lateinit var adapter: LikeAdapter
@@ -46,7 +47,7 @@ class LikePageFragment() : Fragment(), LikedProductOnClickInterface,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_like_page, container, false)
 
         binding.likePageFragment = this
@@ -81,32 +82,31 @@ class LikePageFragment() : Fragment(), LikedProductOnClickInterface,
     }
 
 
-    @SuppressLint("SuspiciousIndentation")
     private fun displayLikedProducts() {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            likeDBRef
+                .whereEqualTo("uid", currentUser.uid)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    likedProductList.clear() // Clear the list before adding new items
+                    for (item in querySnapshot) {
+                        val likedProduct = item.toObject<LikeModel>()
+                        likedProductList.add(likedProduct)
+                    }
 
-        likeDBRef
-            .whereEqualTo("uid", auth.currentUser!!.uid)
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                likedProductList.clear() // Clear the list before adding new items
-                for (item in querySnapshot) {
-                    val likedProduct = item.toObject<LikeModel>()
-                    likedProductList.add(likedProduct)
-
-
+                    adapter.notifyDataSetChanged()
+                    if (likedProductList.size == 0) {
+                        binding.sleepImage.visibility = View.VISIBLE
+                        binding.noItem.visibility = View.VISIBLE
+                    }
                 }
-
-                adapter.notifyDataSetChanged()
-                if (likedProductList.size == 0) {
-                    binding.sleepImage.visibility = View.VISIBLE
-                    binding.noItem.visibility = View.VISIBLE
+                .addOnFailureListener {
+                    requireActivity().toast(it.localizedMessage!!)
                 }
+        } else {
 
-
-            }
-            .addOnFailureListener {
-                requireActivity().toast(it.localizedMessage!!)
-            }
+        }
     }
 
 
@@ -145,6 +145,11 @@ class LikePageFragment() : Fragment(), LikedProductOnClickInterface,
                 requireActivity().toast("Failed To Remove From Liked Items")
             }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

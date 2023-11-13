@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -21,19 +20,21 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.rubabe.shopapp.R
-import com.rubabe.shopapp.ui.adapter.SizeAdapter
-import com.rubabe.shopapp.ui.adapter.SizeOnClickInterface
-import com.rubabe.shopapp.databinding.FragmentDetailsPageBinding
 import com.rubabe.shopapp.data.model.BeautyDisplayModel
 import com.rubabe.shopapp.data.model.ProductOrderModel
+import com.rubabe.shopapp.ui.adapter.SizeAdapter
+import com.rubabe.shopapp.ui.adapter.SizeOnClickInterface
 import com.rubabe.shopapp.utils.Extensions.toast
+import com.rubabe.shopapp.R
+import com.rubabe.shopapp.databinding.FragmentDetailsPageBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailsPageFragment : Fragment(), SizeOnClickInterface {
 
-    private lateinit var binding: FragmentDetailsPageBinding
+    private var _binding: FragmentDetailsPageBinding? = null
+    private val binding get() = _binding!!
+
     //private lateinit var viewModel: DetailsViewModel
     private lateinit var productDatabaseReference: DatabaseReference
     private lateinit var sizeAdapter: SizeAdapter
@@ -54,7 +55,7 @@ class DetailsPageFragment : Fragment(), SizeOnClickInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_details_page, container, false)
 
         binding.detailsPageFragment = this
@@ -217,6 +218,12 @@ class DetailsPageFragment : Fragment(), SizeOnClickInterface {
             findNavController().navigate(R.id.action_detailsFragment_to_mainPageFragment)
         }
 
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

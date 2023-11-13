@@ -5,48 +5,44 @@
 
     <data>
 
-        <variable name="detailsPageToolbarHeader" type="String" />
-        <variable name="detailsPageFragment" type="com.rubabe.shopapp.ui.fragment.DetailsPageFragment" />
-        <variable name="product" type="com.rubabe.shopapp.data.model.BeautyDisplayModel" />
+        <variable
+            name="detailsPageToolbarHeader"
+            type="String" />
+
+        <variable
+            name="detailsPageFragment"
+            type="com.rubabe.shopapp.ui.fragment.DetailsPageFragment" />
+
+        <variable
+            name="product"
+            type="com.rubabe.shopapp.data.model.BeautyDisplayModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <Button
-            android:id="@+id/buttonNavigate"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/back_icon"
-            android:onClick="@{() -> detailsPageFragment.navigate()}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        android:background="#EDE1EC">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/detailToolbar"
-            android:layout_width="0dp"
+            android:id="@+id/cardToolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonNavigate"
+            android:onClick="@{() -> detailsPageFragment.navigate()}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/buttonNavigate"
-            app:layout_constraintTop_toTopOf="@+id/buttonNavigate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/back_icon"
             app:title="@{detailsPageToolbarHeader}"
             app:titleTextColor="@color/main_green" />
-
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@id/llBottomDetails"
-            app:layout_constraintEnd_toEndOf="@id/detailToolbar"
-            app:layout_constraintStart_toStartOf="@id/detailToolbar"
-            app:layout_constraintTop_toBottomOf="@id/detailToolbar"
+            app:layout_constraintEnd_toEndOf="@id/cardToolbar"
+            app:layout_constraintStart_toStartOf="@id/cardToolbar"
+            app:layout_constraintTop_toBottomOf="@id/cardToolbar"
             tools:ignore="SpeakableTextPresentCheck">
 
 
@@ -100,13 +96,13 @@
                 android:maxLines="4"
                 android:padding="@dimen/dp_3"
                 android:text="@{product.description}"
-                android:textColor="@color/main_green" />
+                android:textColor="#CC6464" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select type"
-                android:textColor="@color/white"
+                android:textColor="@color/main_green"
                 android:textStyle="bold" />
 
 
@@ -114,7 +110,9 @@
                 android:id="@+id/rvSelectSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:orientation="horizontal"
+                android:padding="5dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/size_item" />
 
@@ -143,31 +141,28 @@
                         android:id="@+id/tvDetailsProductPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text= '@{"$" +product.price}'
+                        android:text='@{"$" +product.price}'
                         android:textColor="@color/white"
                         android:textSize="@dimen/sp_22"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:onClick="@{() -> detailsPageFragment.addToCart()}"
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnDetailsAddToCart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/custom_button"
-                    android:padding="@dimen/dp_15"
+                    android:onClick="@{() -> detailsPageFragment.addToCart()}"
+                    android:padding="10dp"
                     android:text="Add to Cart"
-                    android:textColor="@color/white" />
+                    app:cornerRadius="8dp" />
 
 
             </LinearLayout>
 
 
         </LinearLayout>
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

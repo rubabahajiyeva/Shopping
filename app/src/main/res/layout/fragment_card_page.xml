@@ -15,7 +15,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#EDE1EC">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/cardToolbar"
@@ -140,16 +141,14 @@
                 android:layout_height="@dimen/dp_15" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCartCheckout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_button"
+                android:padding="10dp"
                 android:text="Checkout"
-                android:onClick="@{() -> cardFragment.checkout()}"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
-
+                app:cornerRadius="8dp"
+                android:onClick="@{() -> cardFragment.checkout()}" />
 
         </LinearLayout>
 

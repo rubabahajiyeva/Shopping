@@ -1,67 +1,97 @@
 package com.rubabe.shopapp.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.rubabe.shopapp.utils.Extensions.toast
+import com.rubabe.shopapp.data.model.User
+import com.rubabe.shopapp.ui.viewmodel.SignUpViewModel
+import com.rubabe.shopapp.utils.RegisterValidation
 import com.rubabe.shopapp.R
 import com.rubabe.shopapp.databinding.FragmentSignUpBinding
-import com.rubabe.shopapp.data.model.UserModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
+private val TAG = "RegisterFragment"
 
-    private lateinit var binding: FragmentSignUpBinding
-    private lateinit var auth: FirebaseAuth
-    private lateinit var databaseReference: DatabaseReference
+@AndroidEntryPoint
+class SignUpFragment : Fragment() {
+
+    private var _binding: FragmentSignUpBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModels<SignUpViewModel>()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        // Inflate the layout for this fragment
+        _binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding = FragmentSignUpBinding.bind(view)
-        auth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance()
-            .getReference("users") // Change this to the appropriate location in your Realtime Database
+        binding.apply {
+            signUpButton.setOnClickListener {
+                val user = User(
+                    usernameSignUp.text.toString().trim(),
+                    emailSignUp.text.toString().trim()
+                )
 
-        val currentUser = auth.currentUser
-        /*  if (currentUser != null) {
-              findNavController().navigate(R.id.action_signUpFragment2_to_splashScreen2)
-          }*/
+                val password = passwordSignUp1.text.toString()
+                val email = emailSignUp.text.toString()
+                val username = usernameSignUp.text.toString()
+                viewModel.createAccountEmailAndPassword(email, password, username)
+            }
 
-        binding.signUpButton.setOnClickListener {
-            signUp()
+            switchToSignIn.setOnClickListener {
+                findNavController().navigate(R.id.action_signUpFragment2_to_signInFragment2)
+            }
+        }
+        viewModel.navigateToSplashScreen.observe(viewLifecycleOwner) { shouldNavigate ->
+            if (shouldNavigate) {
+                findNavController().navigate(R.id.action_signUpFragment2_to_splashScreen2)
+            }
         }
 
-        binding.switchToSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_signUpFragment2_to_signInFragment2)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.validation.collect { validation ->
+                    if (validation.email is RegisterValidation.Failed) {
+                        withContext(Dispatchers.Main) {
+                            binding.emailSignUp.apply {
+                                requestFocus()
+                                error = validation.email.message
+                            }
+                        }
+                    }
+
+                    if (validation.password is RegisterValidation.Failed) {
+                        withContext(Dispatchers.Main) {
+                            binding.passwordSignUp1.apply {
+                                requestFocus()
+                                error = validation.password.message
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
-    private fun signUp() {
-        val email = binding.emailSignUp.text.toString()
-        val password = binding.passwordSignUp1.text.toString()
-        val name = binding.usernameSignUp.text.toString()
-
-        if (email.isNotEmpty() && password.isNotEmpty() && name.isNotEmpty()) {
-            auth.createUserWithEmailAndPassword(email.trim(), password)
-                .addOnSuccessListener {
-                    // Create a user model
-                    val userModel: UserModel = UserModel(auth.uid, name, email, password)
-
-                    // Save the user model to the Realtime Database
-                    databaseReference.child(auth.uid ?: "" ).setValue(userModel)
-
-                    // Navigate to the sign-in fragment
-                    findNavController().navigate(R.id.action_signUpFragment2_to_splashScreen2)
-                }
-                .addOnFailureListener {
-                    requireActivity().toast("Sign Up Fail")
-                }
-        } else {
-            requireActivity().toast("Enter email, password, and username")
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
+
 }
