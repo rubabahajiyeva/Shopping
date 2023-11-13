@@ -1,8 +1,6 @@
 package com.rubabe.shopapp.ui.adapter
 
 import android.annotation.SuppressLint
-import com.rubabe.shopapp.databinding.CardProductItemBinding
-import com.rubabe.shopapp.data.model.CardModel
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.rubabe.shopapp.data.model.CardModel
 import com.rubabe.shopapp.data.model.ProductOrderModel
+import com.rubabe.shopapp.databinding.CardProductItemBinding
 
 
 class CardAdapter(

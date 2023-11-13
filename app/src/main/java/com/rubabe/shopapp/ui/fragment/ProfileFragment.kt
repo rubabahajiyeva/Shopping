@@ -2,28 +2,30 @@ package com.rubabe.shopapp.ui.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.rubabe.shopapp.R
-import com.rubabe.shopapp.activity.SignActivity
-import com.rubabe.shopapp.databinding.FragmentProfileBinding
 import com.rubabe.shopapp.data.model.UserModel
+import com.rubabe.shopapp.ui.activity.SignActivity
+import com.rubabe.shopapp.R
+import com.rubabe.shopapp.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
-    private lateinit var binding: FragmentProfileBinding
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
     //private lateinit var viewModel: ProfileViewModel
 
     private var auth = FirebaseAuth.getInstance()
@@ -35,11 +37,40 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
 
         binding.profileFragment = this
         binding.profileToolbarHeader = "My Profile"
+
+        binding.goToEditProfile.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_profileFragment_to_editProfileFragment)
+        }
+
+        binding.goToAboutApp.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_profileFragment_to_aboutAppFragment)
+        }
+
+        binding.goToHelp.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_helpFragment)
+        }
+
+        binding.goToBalance.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_profileFragment_to_balanceFragment)
+        }
+
+        binding.goToSettings.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_profileFragment_to_settingsFragment)
+        }
+
+        binding.goToPrivacyAndPolicy.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_profileFragment_to_privacyAndPolicyFragment)
+        }
 
         return binding.root
     }
@@ -53,19 +84,16 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         databaseReference = FirebaseDatabase.getInstance().reference
 
-
-        // Retrieve and display the username
-        val userId = auth.currentUser?.uid
-        if (userId != null) {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
             databaseReference.child("users").child(userId).addListenerForSingleValueEvent(
                 object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val user = snapshot.getValue(UserModel::class.java)
                         user?.let {
-                            // Set the retrieved username to your TextView or UI element
                             binding.usernameTV.text = user.userName
                         }
                     }
@@ -87,6 +115,8 @@ class ProfileFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding
+        _binding = null
     }
 }
+
+

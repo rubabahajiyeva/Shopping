@@ -16,10 +16,10 @@
         android:theme="@style/Theme.ShopApp"
         tools:targetApi="31">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SignActivity"
+            android:name=".ui.activity.SignActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

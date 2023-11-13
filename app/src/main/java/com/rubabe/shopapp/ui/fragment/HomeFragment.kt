@@ -14,20 +14,23 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
-import com.rubabe.shopapp.R
 import com.rubabe.shopapp.data.model.BeautyDisplayModel
-import com.rubabe.shopapp.databinding.FragmentHomeBinding
+import com.rubabe.shopapp.ui.adapter.BannerAdapter
 import com.rubabe.shopapp.ui.adapter.BeautyDisplayAdapter
 import com.rubabe.shopapp.ui.adapter.CategoryOnClickInterface
 import com.rubabe.shopapp.ui.adapter.LikeOnClickInterface
 import com.rubabe.shopapp.ui.adapter.MainCategoryAdapter
 import com.rubabe.shopapp.ui.adapter.ProductOnClickInterface
 import com.rubabe.shopapp.ui.viewmodel.HomeViewModel
+import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
+import com.rubabe.shopapp.R
+import com.rubabe.shopapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,13 +39,17 @@ class HomeFragment : Fragment(),
     ProductOnClickInterface, LikeOnClickInterface {
 
 
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var productList: ArrayList<BeautyDisplayModel>
 
     private lateinit var categoryList: LinkedHashSet<BeautyDisplayModel>
     private lateinit var productsAdapter: BeautyDisplayAdapter
     private lateinit var categoryAdapter: MainCategoryAdapter
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var bannerRecyclerView: RecyclerView
+    private lateinit var bannerAdapter: BannerAdapter
 
 
     private lateinit var viewModel: HomeViewModel
@@ -58,7 +65,7 @@ class HomeFragment : Fragment(),
         savedInstanceState: Bundle?
     ): View {
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
         categoryList = LinkedHashSet()
         productList = ArrayList()
@@ -78,6 +85,16 @@ class HomeFragment : Fragment(),
             categoryAdapter.list = category
             categoryAdapter.notifyDataSetChanged()
         }
+
+        bannerRecyclerView = binding.bannerRV
+        bannerRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        val imageResources = listOf(R.drawable.banner1, R.drawable.banner2, R.drawable.banner3,)
+
+        bannerAdapter = BannerAdapter(imageResources)
+        bannerRecyclerView.adapter = bannerAdapter
+
+
 
 
 
@@ -136,9 +153,14 @@ class HomeFragment : Fragment(),
 
         binding.tvMainCategories.text = "All Products"
 
-         viewModel.addCategory()
+        viewModel.addCategory()
 
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
 }

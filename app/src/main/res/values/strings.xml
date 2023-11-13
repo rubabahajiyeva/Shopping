@@ -7,4 +7,47 @@
     <string name="create_new_account_sign_up"><font color="#FFFFFF">Create New Account? </font> <font color="#F6E654">Sign Up </font> </string>
     <string name="already_account_sign_in"><font color="#FFFFFF">Already have Account ? </font> <font color="#F6E654">Sign In </font> </string>
     <string name="sign_up">Sign Up</string>
+    <string name="email"><font color="#DACB49">Email</font><font color="#FF0000">*</font> </string>
+    <string name="backToLogin"><font color="#DACB49">Back to</font><font color="#659C67"> Login</font> </string>
+    <string name="policyandprivacy"> 1. Information We Collect
+
+\nWe may collect the following types of information:
+
+\nPersonal Information: We may collect personal information, such as your name, email address, shipping address, and payment information when you make a purchase.
+
+\nDevice Information: We may collect information about the device you use to access our app, including the device type, operating system, and unique device identifiers.
+
+\nUsage Information: We may collect information about how you use our app, including the pages you visit, the products you view, and the actions you take.
+
+\n2. How We Use Your Information
+
+\nWe use your information for the following purposes:
+
+\nTo process and fulfill your orders.
+\nTo communicate with you about your orders, promotions, and updates.
+\nTo improve and personalize your experience with our app.
+\To analyze and understand how users interact with our app.
+\n3. Information Sharing
+
+\nWe may share your information with:
+
+\nService providers who help us with order processing, shipping, and other business functions.
+\nLegal authorities if required by law or to protect our rights.
+\n4. Your Choices
+
+\nYou can:
+
+\Update your account information.
+\Opt-out of promotional emails.
+\n5. Security
+
+We take reasonable measures to protect your information from unauthorized access.
+
+\n6. Changes to This Privacy Policy
+
+\nWe may update this Privacy Policy from time to time. Please review it periodically for changes.
+
+\n7. Contact Us
+
+\nIf you have any questions or concerns about this Privacy Policy, please contact us at rubabahajiyeva@gmail.com.</string>
 </resources>

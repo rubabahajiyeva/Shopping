@@ -1,10 +1,9 @@
-package com.rubabe.shopapp.activity
+package com.rubabe.shopapp.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.firebase.auth.FirebaseAuth
@@ -47,7 +46,5 @@ class MainActivity : AppCompatActivity() {
 /*    override fun onBackPressed() {
         finish() // Finish the activity, which will exit the app
     }*/
-
-
 
 }

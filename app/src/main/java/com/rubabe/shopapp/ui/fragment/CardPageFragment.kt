@@ -8,25 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.rubabe.shopapp.R
-import com.rubabe.shopapp.ui.adapter.CardAdapter
-import com.rubabe.shopapp.databinding.FragmentCardPageBinding
+
 import com.rubabe.shopapp.data.model.CardModel
+import com.rubabe.shopapp.ui.adapter.CardAdapter
 import com.rubabe.shopapp.utils.Extensions.toast
+import com.rubabe.shopapp.R
+import com.rubabe.shopapp.databinding.FragmentCardPageBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CardPageFragment : Fragment(), CardAdapter.OnItemClickListener,
     CardAdapter.OnQuantityChangeListener, CardAdapter.OnNavigationClickListener {
 
-    private lateinit var binding: FragmentCardPageBinding
+    private var _binding: FragmentCardPageBinding? = null
+    private val binding get() = _binding!!
+
     //private lateinit var viewModel: CardViewModel
     private lateinit var cartList: ArrayList<CardModel>
     private lateinit var auth: FirebaseAuth
@@ -46,7 +48,7 @@ class CardPageFragment : Fragment(), CardAdapter.OnItemClickListener,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding =
+        _binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_card_page, container, false)
 
 
@@ -204,6 +206,12 @@ class CardPageFragment : Fragment(), CardAdapter.OnItemClickListener,
         adapter.notifyDataSetChanged()
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 
 
 }

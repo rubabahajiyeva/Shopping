@@ -7,52 +7,69 @@
     tools:context=".ui.fragment.SignInFragment">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/dp_158"
-        android:layout_height="@dimen/dp_152"
-        android:scaleType="fitXY"
-        android:src="@drawable/sign_in_small_rectangle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="@dimen/dp_299"
-        android:layout_height="@dimen/dp_202"
-        android:src="@drawable/pana"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-
-    <ImageView
-        android:id="@+id/imageView4"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:scaleType="fitXY"
-        android:src="@drawable/signin_background"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/sign_in"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="@dimen/dp_24"
-        android:fontFamily="@font/manrope_semibold"
-        android:text="Sign in"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imageView4" />
 
-    <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/dp_158"
+                android:layout_height="@dimen/dp_152"
+                android:scaleType="fitXY"
+                android:src="@drawable/sign_in_small_rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/dp_299"
+                android:layout_height="@dimen/dp_202"
+                android:src="@drawable/pana"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:scaleType="fitXY"
+                android:src="@drawable/signin_background"
+                app:layout_constraintBottom_toBottomOf="@id/constraint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_32"
+                android:layout_marginTop="@dimen/dp_24"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Sign in"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imageView4" />
+
+            <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -117,33 +134,46 @@
                 app:layout_constraintTop_toBottomOf="@+id/password" />
 
 
-    <TextView
-        android:id="@+id/switchToSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/create_new_account_sign_up"
-        android:textSize="@dimen/sp_16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_Sign_In" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sign_In_Button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/sign_button_background"
-        android:fontFamily="@font/manrope_semibold"
-        android:onClick="signIn"
-        android:text="@string/sign_in"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/switchToSignUp"
-        app:layout_constraintStart_toStartOf="@+id/switchToSignUp"
-        app:layout_constraintTop_toBottomOf="@+id/switchToSignUp" />
+            <TextView
+                android:id="@+id/forgetPasswordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:text="Forgot Password?"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_Sign_In" />
 
 
+            <TextView
+                android:id="@+id/switchToSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="@string/create_new_account_sign_up"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/forgetPasswordTV" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_32"
+                android:layout_marginTop="@dimen/dp_32"
+                android:fontFamily="@font/manrope_semibold"
+                android:onClick="signIn"
+                android:padding="12dp"
+                android:text="@string/sign_in"
+                app:cornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/switchToSignUp"
+                app:layout_constraintStart_toStartOf="@+id/switchToSignUp"
+                app:layout_constraintTop_toBottomOf="@+id/switchToSignUp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

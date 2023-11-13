@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
 import com.rubabe.shopapp.R
-import com.rubabe.shopapp.databinding.BeautyDisplayItemBinding
 import com.rubabe.shopapp.data.model.BeautyDisplayModel
+import com.rubabe.shopapp.databinding.BeautyDisplayItemBinding
+import com.rubabe.shopapp.ui.viewmodel.LikedItemsViewModel
 
 class BeautyDisplayAdapter(
     private val context: Context,

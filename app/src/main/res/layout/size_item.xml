@@ -10,11 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_5"
-        android:background="@color/light_gray"
+        android:background="@drawable/custom_bg2"
         android:padding="@dimen/dp_5"
         android:text="Deep"
+
+
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="#CC6464"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
