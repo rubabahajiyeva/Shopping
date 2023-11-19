@@ -22,7 +22,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EDE1EC">
+        android:background="#fdfdf6">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/cardToolbar"
@@ -96,14 +96,14 @@
                 android:maxLines="4"
                 android:padding="@dimen/dp_3"
                 android:text="@{product.description}"
-                android:textColor="#CC6464" />
+                android:textColor="#404040" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select type"
-                android:textColor="@color/main_green"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                />
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -134,7 +134,7 @@
                         android:paddingVertical="@dimen/dp_5"
                         android:paddingEnd="@dimen/dp_5"
                         android:text="Price"
-                        android:textColor="@color/main_green"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/sp_16" />
 
                     <TextView
@@ -142,7 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text='@{"$" +product.price}'
-                        android:textColor="@color/white"
+                        android:textColor="#E64500"
                         android:textSize="@dimen/sp_22"
                         android:textStyle="bold" />
 

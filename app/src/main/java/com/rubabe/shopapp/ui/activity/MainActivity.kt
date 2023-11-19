@@ -43,8 +43,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-/*    override fun onBackPressed() {
-        finish() // Finish the activity, which will exit the app
-    }*/
 
 }

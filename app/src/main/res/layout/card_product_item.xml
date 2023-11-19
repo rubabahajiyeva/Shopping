@@ -4,116 +4,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dp_20">
+    android:layout_marginBottom="@dimen/dp_20"
+    android:layout_marginStart="@dimen/dp_20"
+    android:layout_marginEnd="@dimen/dp_20"
+    android:elevation="0dp">
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/ivCardView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:cardBackgroundColor="@color/main_green"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/dp_10"
+        app:cardElevation="1dp"
+        app:strokeWidth="0.2dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@id/guideline5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/ivCartProduct"
+        <androidx.constraintlayout.widget.ConstraintLayout
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/estee_lauder" />
+            android:layout_height="match_parent">
 
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCartProductName"
-        style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_15"
-        android:text="Advanced Night Repair"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-        app:layout_constraintStart_toEndOf="@id/ivCardView"
-
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCartProductPrice"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="1000"
-        app:layout_constraintStart_toStartOf="@id/tvCartProductName"
-        app:layout_constraintTop_toBottomOf="@id/tvCartProductName" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Type : "
-        app:layout_constraintStart_toStartOf="@id/tvCartProductPrice"
-        app:layout_constraintTop_toBottomOf="@id/tvCartProductPrice" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvCartProductType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_3"
-        android:text="07"
-        app:layout_constraintBottom_toBottomOf="@id/tvType"
-        app:layout_constraintStart_toEndOf="@id/tvType"
-        app:layout_constraintTop_toTopOf="@id/tvType" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="@dimen/dp_10"
-        android:paddingBottom="@dimen/dp_10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline6"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCartItemAdd"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:background="@drawable/custom_size"
-            android:text="+"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-            android:textColor="@color/white"
-            tools:ignore="TouchTargetSizeCheck" />
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivCartProduct"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/este_lauder_mix"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_border_color="#333333"
+                app:riv_mutate_background="true" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCartItemCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_6"
-            android:padding="@dimen/dp_3"
-            android:text="01" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCartProductName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="16dp"
+                android:text="Advanced Night Repair"
+                android:maxLines="2"
+
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/deleteIcon"
+                app:layout_constraintStart_toEndOf="@+id/ivCartProduct"
+                app:layout_constraintTop_toTopOf="@+id/ivCartProduct" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCartItemRemove"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:background="@drawable/custom_size"
-            android:text="-"
-            android:textColor="@color/white"
-            tools:ignore="TouchTargetSizeCheck" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCartProductPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:text="1000"
+                android:textStyle="bold"
+                android:textColor="#FC6828"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/ivCartProduct"
+                app:layout_constraintTop_toBottomOf="@+id/tvCartProductName" />
 
-        <ImageView
-            android:id="@+id/deleteIcon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="@dimen/dp_20"
-            app:srcCompat="@drawable/delete_icon" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:text="Type : "
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivCartProduct"
+                app:layout_constraintTop_toBottomOf="@+id/tvCartProductPrice" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCartProductType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="07"
+                app:layout_constraintBottom_toBottomOf="@+id/tvType"
+                app:layout_constraintStart_toEndOf="@+id/tvType"
+                app:layout_constraintTop_toTopOf="@+id/tvType" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCartProductType"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCartProductType">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCartItemRemove"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/custom_size"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
-    </LinearLayout>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCartItemCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="2dp"
+                    android:padding="@dimen/dp_3"
+                    android:text="01" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCartItemAdd"
+                    android:layout_width="@dimen/dp_30"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/custom_size"
+                    android:text="+"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/deleteIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvCartProductName"
+                app:srcCompat="@drawable/delete_icon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -121,7 +158,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.2991914" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
@@ -129,6 +166,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.9" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

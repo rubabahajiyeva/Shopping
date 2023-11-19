@@ -48,11 +48,6 @@ class ProfileFragment : Fragment() {
                 .navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
 
-        binding.goToAboutApp.setOnClickListener {
-            Navigation.findNavController(it)
-                .navigate(R.id.action_profileFragment_to_aboutAppFragment)
-        }
-
         binding.goToHelp.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.action_profileFragment_to_helpFragment)
         }
@@ -118,5 +113,4 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 }
-
 
