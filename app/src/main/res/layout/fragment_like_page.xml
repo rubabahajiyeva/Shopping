@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.LikePageFragment"
-        android:background="#EDE1EC">
+        android:background="#FDFDF6">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/likeToolbar"
@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2"
+            app:spanCount="1"
             android:adapter="@{likeAdapter}"
             android:orientation="vertical"
             android:layout_margin="@dimen/dp_10"

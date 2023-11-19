@@ -19,12 +19,16 @@
 
         app:layout_constraintDimensionRatio="2:1">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/CustomCardViewStyle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="15dp"
+            app:strokeColor="@color/gray"
+            app:strokeWidth="0.5dp"
+            app:cardElevation="0.1dp"
+
             app:cardPreventCornerOverlap="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +44,9 @@
                     android:id="@+id/ivBeautyDisplayItem"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:riv_corner_radius_top_left="@dimen/dp_30"
+                    app:riv_corner_radius_top_left="5dp"
                     app:riv_corner_radius_bottom_right="0dp"
-                    app:riv_corner_radius_top_right="30dp"
+                    app:riv_corner_radius_top_right="5dp"
                     app:riv_corner_radius_bottom_left="0dp"
                     android:scaleType="fitXY"
                     app:riv_border_color="#333333"
@@ -103,7 +107,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -80,9 +80,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:hint="@{userName.userName}"
-                android:textColor="@color/main_green"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_18"
-                android:textStyle="bold"
                 android:background="@drawable/edit_text_background"
                 android:padding="10dp"
                 android:layout_margin="20dp"
@@ -96,9 +95,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:hint="@{userName.userEmail}"
-                android:textColor="@color/main_green"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_18"
-                android:textStyle="bold"
                 android:background="@drawable/edit_text_background"
                 android:padding="10dp"
                 android:layout_margin="20dp"
@@ -139,7 +137,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/newPassword" />
 
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

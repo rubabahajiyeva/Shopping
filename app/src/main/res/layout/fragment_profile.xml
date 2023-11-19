@@ -56,7 +56,7 @@
                 android:id="@+id/imageView6"
                 android:layout_width="@dimen/dp_100"
                 android:layout_height="@dimen/dp_100"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:src="@drawable/profile_bottom_selected"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,10 +66,10 @@
                 android:id="@+id/usernameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:text="@{userName.userName}"
                 android:textAlignment="center"
-                android:textColor="@color/yellow"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp_18"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -80,10 +80,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="10dp"
                 android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/exitAccount"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/usernameTV">
@@ -106,10 +107,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Edit on profile"
-                        android:textColor="@color/black"
+                        android:layout_margin="10dp"
                         android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-                        android:layout_margin="10dp"/>
+                        android:text="Edit on profile"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -133,10 +134,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Balance"
-                        android:textColor="@color/black"
+                        android:layout_margin="10dp"
                         android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-                        android:layout_margin="10dp"/>
+                        android:text="Balance"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -160,39 +161,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Help"
-                        android:textColor="@color/black"
-                        android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-                        android:layout_margin="10dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/goToAboutApp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-
-                    android:orientation="horizontal"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/usernameTV">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:src="@drawable/baseline_info_24" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="About app"
-                        android:textColor="@color/black"
                         android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-                        android:layout_margin="10dp"/>
+                        android:text="Help"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/goToPrivacyAndPolicy"
@@ -214,10 +189,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Privacy and Policy"
-                        android:textColor="@color/black"
+                        android:layout_margin="10dp"
                         android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-                        android:layout_margin="10dp"/>
+                        android:text="Privacy and Policy"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -226,6 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
 
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -241,10 +217,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Settings"
-                        android:textColor="@color/black"
+                        android:layout_margin="10dp"
                         android:drawableEnd="@drawable/baseline_arrow_forward_ios_24"
-                        android:layout_margin="10dp"/>
+                        android:text="Settings"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 

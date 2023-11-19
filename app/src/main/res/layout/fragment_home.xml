@@ -12,13 +12,16 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:background="#EDE1EC"
+      android:background="#fdfdf6"
       tools:context=".ui.fragment.HomeFragment">
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bannerRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -37,10 +40,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMainCategories"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_70"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:adapter="@{categoryAdapter}"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_10"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +56,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +80,8 @@
           android:layout_marginEnd="@dimen/dp_5"
           android:textAllCaps="false"
           android:onClick="@{() -> homeFragment.seeAll()}"
-          android:background="@drawable/see_all_background"
-          android:textColor="#639C30"
+          android:background="@drawable/custom_button"
+          android:textColor="#FFFFFF"
           android:text="See All"
           android:textSize="@dimen/sp_18" />
     </LinearLayout>
@@ -90,7 +94,7 @@
         app:spanCount="2"
         android:adapter="@{beautyDisplayAdapter}"
         android:orientation="vertical"
-        android:layout_margin="@dimen/dp_10"
+        android:layout_margin="5dp"
         android:padding="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/llTextGroup"

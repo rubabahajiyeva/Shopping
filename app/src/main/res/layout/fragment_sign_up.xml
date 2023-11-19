@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="0dp"
-        android:layout_height="@dimen/dp_250"
+        android:layout_height="200dp"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_24"
@@ -18,156 +18,146 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dp_16"
-        android:scaleType="fitXY"
-        android:src="@drawable/signin_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2" />
-
 
     <TextView
         android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="@dimen/dp_24"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/manrope_semibold"
         android:text="@string/sign_up"
-        android:textColor="@color/white"
+        android:textColor="#040415"
         android:textSize="@dimen/sp_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
-                android:id="@+id/username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="@dimen/dp_16"
-                android:fontFamily="@font/manrope_semibold"
-                android:text="Username"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_18"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sign_up" />
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="Username"
+        android:textColor="#040415"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up" />
 
-            <EditText
-                android:id="@+id/username_Sign_Up"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_45"
-                android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="@dimen/dp_8"
-                android:background="@drawable/edit_text_background"
-                android:drawableStart="@drawable/username_icon"
-                android:drawablePadding="@dimen/dp_6"
-                android:ems="10"
-                android:inputType="text"
-                android:outlineProvider="background"
-                android:paddingStart="@dimen/dp_8"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username" />
-
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="@dimen/dp_16"
-                android:fontFamily="@font/manrope_semibold"
-                android:text="Email"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_18"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username_Sign_Up" />
-
-            <EditText
-                android:id="@+id/email_Sign_Up"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_45"
-                android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="@dimen/dp_8"
-                android:background="@drawable/edit_text_background"
-                android:drawableStart="@drawable/email_icon"
-                android:drawablePadding="@dimen/dp_6"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:outlineProvider="background"
-                android:paddingStart="@dimen/dp_8"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email" />
+    <EditText
+        android:id="@+id/username_Sign_Up"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/username_icon"
+        android:drawablePadding="@dimen/dp_6"
+        android:ems="10"
+        android:inputType="text"
+        android:outlineProvider="background"
+        android:paddingStart="@dimen/dp_8"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
 
-            <TextView
-                android:id="@+id/password_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="@dimen/dp_16"
-                android:fontFamily="@font/manrope_semibold"
-                android:text="@string/password"
-                android:textColor="@color/white"
-                android:textSize="@dimen/sp_18"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/email_Sign_Up" />
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="Email"
+        android:textColor="#040415"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username_Sign_Up" />
 
-            <com.rubabe.shopapp.custom.CustomEditTextTwo
-                android:id="@+id/password_Sign_Up1"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_45"
-                android:layout_marginHorizontal="@dimen/dp_32"
-                android:layout_marginTop="@dimen/dp_8"
-                android:background="@drawable/edit_text_background"
-                android:drawablePadding="@dimen/dp_6"
-                android:ems="10"
-                android:inputType="text"
-                android:outlineProvider="background"
-                android:paddingStart="@dimen/dp_8"
-                android:paddingEnd="@dimen/dp_8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password_sign_up" />
+    <EditText
+        android:id="@+id/email_Sign_Up"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/edit_text_background"
+        android:drawableStart="@drawable/email_icon"
+        android:drawablePadding="@dimen/dp_6"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:outlineProvider="background"
+        android:paddingStart="@dimen/dp_8"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+
+    <TextView
+        android:id="@+id/password_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/manrope_semibold"
+        android:text="@string/password"
+        android:textColor="#040415"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email_Sign_Up" />
+
+    <com.rubabe.shopapp.custom.CustomEditTextTwo
+        android:id="@+id/password_Sign_Up1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:layout_marginHorizontal="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/edit_text_background"
+        android:drawableLeft="@drawable/password_custom_privacy"
+        android:drawablePadding="@dimen/dp_6"
+        android:ems="10"
+        android:inputType="text"
+        android:outlineProvider="background"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_sign_up" />
 
 
     <TextView
         android:id="@+id/switchToSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="@string/already_account_sign_in"
         android:textSize="@dimen/sp_16"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_Sign_Up1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/sign_Up_Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_32"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/sign_button_background"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/manrope_semibold"
-        android:text="Sign Up"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:onClick="signIn"
+        android:padding="12dp"
+        android:text="@string/sign_up"
+        app:cornerRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/switchToSignIn"
-        app:layout_constraintStart_toStartOf="@+id/switchToSignIn"
-        app:layout_constraintTop_toBottomOf="@id/switchToSignIn" />
+        app:layout_constraintStart_toStartOf="@+id/switchToSignIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
