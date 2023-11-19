@@ -32,9 +32,8 @@
 
 | Edit Screen                           | Help and Support Screen               |
 | ------------------------------------- | ------------------------------------- |
-| ![edit_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/d3748c8b-dc06-46d8-9af8-a72c765dda8b) | ![help_and_support_page](https://github.com/rubabahajiyeva/Shopping/assets/114312929/34b2d84b-7dd3-423b-82db-0e93a4cfaa58)|
+| ![edit_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/d3748c8b-dc06-46d8-9af8-a72c765dda8b) | ![help_and_support_page](https://github.com/rubabahajiyeva/Shopping/assets/114312929/34b2d84b-7dd3-423b-82db-0e93a4cfaa58) |
 
-
-**Reset Password Screen** 
- ![settings_page](https://github.com/rubabahajiyeva/Shopping/assets/114312929/cbf36e4a-ddef-40d8-a915-c687e11c966f)
+**Settings Screen** 
+![settings_page](https://github.com/rubabahajiyeva/Shopping/assets/114312929/cbf36e4a-ddef-40d8-a915-c687e11c966f)
 
