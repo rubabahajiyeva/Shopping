@@ -36,3 +36,6 @@
 
 ### Settings Screen
 ![Settings Screen](https://github.com/rubabahajiyeva/Shopping/assets/114312929/cbf36e4a-ddef-40d8-a915-c687e11c966f)
+
+## Author
+- [@RubabaHajiyeva](https://www.linkedin.com/in/rhajiyeva/)
