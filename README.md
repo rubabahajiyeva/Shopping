@@ -10,20 +10,34 @@
 - [FireStore Database](https://firebase.google.com/docs/firestore/quickstart#android)
 - [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
 # Outputs 🖼
+![reset_passoword_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
 
 | Sign In Screen                 | Sign Up Screen                 |
 | ------------------------------ | ------------------------------ |
-| ![Sign In Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/3a00a011-b5d8-4ba8-9b87-c2b1da81d1e2) | ![Sign Up Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/75b77cb2-8aa3-4acb-bf3c-f2b845bc6212) |
+| ![sign_in_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/e50587bc-428e-43b3-a72d-74839cd86690) | ![sign_up_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/b27e9e99-57b2-4934-af34-94a285d00576) |
+![home_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/fabfceda-d2de-4b7f-b2d6-6976a4827d0f)
+
+**Reset Password Screen** 
+![reset_passoword_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
 
 | Home Screen                           | Favorite Screen                       |
 | ------------------------------------- | ------------------------------------- |
-| ![Home Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/e7896173-2544-4c29-900a-cf042271b88c) | ![Favorite Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/24a43105-79ef-4ea2-a3e9-6b7ba04d3653) |
+| ![home_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/fabfceda-d2de-4b7f-b2d6-6976a4827d0f) | ![favourite_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/3ccbfa24-3c5e-4209-bc0e-e6d631bf77b1) |
 
 
 | Detail Screen                         | Card Screen                           |
 | ------------------------------------- | ------------------------------------- |
-| ![Detail Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/a7f04581-31bd-4ac7-a338-4ed1a117ea15) | ![Card Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/619ebb3f-dafe-4725-9db4-6db6b8749317) |
-
+| ![detail_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/5b750eec-f491-4c8d-a529-e22726315b5f) | ![card_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/3db0373f-5879-4f3e-9c57-143472bea886) |
 
 **Profile Screen**                      
-![Profile Image](https://github.com/rubabahajiyeva/Shopping/assets/114312929/e6ff1a1c-dbbb-4b18-b0f6-002d598e96c8)
+![profile_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/89ced834-0d4b-4548-80df-6eaf92315269)
+
+
+| Edit Screen                           | Help and Support Screen               |
+| ------------------------------------- | ------------------------------------- |
+| ![edit_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/d3748c8b-dc06-46d8-9af8-a72c765dda8b) | ![help_and_support_page](https://github.com/rubabahajiyeva/Shopping/assets/114312929/34b2d84b-7dd3-423b-82db-0e93a4cfaa58)|
+
+
+**Reset Password Screen** 
+ ![settings_page](https://github.com/rubabahajiyeva/Shopping/assets/114312929/cbf36e4a-ddef-40d8-a915-c687e11c966f)
+
