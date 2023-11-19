@@ -17,6 +17,7 @@
 **Reset Password Screen** 
 ![reset_passoword_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
 
+
 | Home Screen                           | Favorite Screen                       |
 | ------------------------------------- | ------------------------------------- |
 | ![home_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/fabfceda-d2de-4b7f-b2d6-6976a4827d0f) | ![favourite_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/3ccbfa24-3c5e-4209-bc0e-e6d631bf77b1) |
