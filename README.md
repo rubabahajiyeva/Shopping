@@ -15,9 +15,8 @@
 | ------------------------------ | ------------------------------ |
 | ![sign_in_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/e50587bc-428e-43b3-a72d-74839cd86690) | ![sign_up_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/b27e9e99-57b2-4934-af34-94a285d00576) |
 
-**Reset Password Screen** 
-![reset_passoword_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
-
+### Reset Password Screen
+![Reset Password Screen](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
 
 | Home Screen                           | Favorite Screen                       |
 | ------------------------------------- | ------------------------------------- |
@@ -28,9 +27,8 @@
 | ------------------------------------- | ------------------------------------- |
 | ![detail_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/5b750eec-f491-4c8d-a529-e22726315b5f) | ![card_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/3db0373f-5879-4f3e-9c57-143472bea886) |
 
-**Profile Screen**                      
-![profile_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/89ced834-0d4b-4548-80df-6eaf92315269)
-
+### Profile Screen
+![Profile Screen](https://github.com/rubabahajiyeva/Shopping/assets/114312929/89ced834-0d4b-4548-80df-6eaf92315269)
 
 | Edit Screen                           | Help and Support Screen               |
 | ------------------------------------- | ------------------------------------- |
