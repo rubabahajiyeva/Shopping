@@ -10,12 +10,9 @@
 - [FireStore Database](https://firebase.google.com/docs/firestore/quickstart#android)
 - [Firebase Storage](https://firebase.google.com/docs/storage/android/start)
 # Outputs 🖼
-![reset_passoword_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
-
 | Sign In Screen                 | Sign Up Screen                 |
 | ------------------------------ | ------------------------------ |
 | ![sign_in_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/e50587bc-428e-43b3-a72d-74839cd86690) | ![sign_up_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/b27e9e99-57b2-4934-af34-94a285d00576) |
-![home_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/fabfceda-d2de-4b7f-b2d6-6976a4827d0f)
 
 **Reset Password Screen** 
 ![reset_passoword_page (1)](https://github.com/rubabahajiyeva/Shopping/assets/114312929/939d823c-bd8a-47ce-9c09-9d7952aff358)
