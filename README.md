@@ -42,7 +42,7 @@
 - [@KaramAfandi](https://www.linkedin.com/in/karamlyy/)
 - [@ShalalaMursaliyeva](https://www.linkedin.com/in/shalala-mursaliyeva-2b87b81b6/)
 
-# Quick run
+## Quick run
 - Click view row
 - Give the permission to the app
 - [Download app](https://github.com/karamlyy/ShoppingApp/blob/master/shopping-app.apk)
