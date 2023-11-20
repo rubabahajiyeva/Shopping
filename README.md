@@ -43,6 +43,6 @@
 - [@ShalalaMursaliyeva](https://www.linkedin.com/in/shalala-mursaliyeva-2b87b81b6/)
 
 ## Quick run
-- Click view row
+- Click view raw
 - Give the permission to the app
 - [Download app](https://github.com/karamlyy/ShoppingApp/blob/master/shopping-app.apk)
