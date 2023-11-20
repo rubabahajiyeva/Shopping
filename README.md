@@ -41,3 +41,8 @@
 - [@RubabaHajiyeva](https://www.linkedin.com/in/rhajiyeva/)
 - [@KaramAfandi](https://www.linkedin.com/in/karamlyy/)
 - [@ShalalaMursaliyeva](https://www.linkedin.com/in/shalala-mursaliyeva-2b87b81b6/)
+
+# Quick run
+* [Click view row](https://developer.android.com/topic/architecture)
+* [Give the permission to the app](https://developer.android.com/topic/architecture)
+* [Download app]
